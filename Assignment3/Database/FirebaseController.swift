@@ -15,16 +15,15 @@ import FirebaseFirestore
 
 class FirebaseController: NSObject, DatabaseProtocol {
     
-    //let DEFAULT_FAVOURITE_NAME = "Default Favorite"
+    
     var listeners = MulticastDelegate<DatabaseListener>()
     var authController: Auth
     var database: Firestore
     var humidTempSonarRef: CollectionReference?
     var colourRFIDRef: CollectionReference?
-    //var favouritesRef: CollectionReference?
     var humidTempSonarDataList: [HumidTempSonarData]
     var colourRfidList: [ColourRfidData]
-    //var defaultFavourite: Favourite
+    
     
     
     
@@ -64,7 +63,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
                 print("Error fetching documents: \(error!)")
                 return
             }
-            print("something")
+            
             self.parseRecordsSnapshot(snapshot: querySnapshot!)
         }
         
@@ -79,7 +78,9 @@ class FirebaseController: NSObject, DatabaseProtocol {
             
         }
         
+        
     }
+    
     
     
     func deleteHumidTempSonarData(htsRecord: HumidTempSonarData) {
@@ -101,16 +102,26 @@ class FirebaseController: NSObject, DatabaseProtocol {
             listener.onColourRFIDChange(change: .update, rfidColourRecords: colourRfidList)
         }
         
+        if listener.listenerType == ListenerType.all
+        {
+            listener.onColourRFIDChange(change: .update, rfidColourRecords: colourRfidList)
+            listener.onHumidTempSonarDataChange(change: .update, htsRecords: humidTempSonarDataList)
+        }
+        
     }
+    
     
     
     func parseRecordsSnapshot(snapshot: QuerySnapshot!) { snapshot.documentChanges.forEach { change in
         
         let documentRef = change.document.documentID
         
-        print("documentRef \(documentRef)")
-        
         if change.document.data()["Humidity"] as? Double == nil
+        {
+            return
+        }
+        
+        if change.document.data()["SonarDistance"] as? Double == nil
         {
             return
         }
@@ -121,9 +132,6 @@ class FirebaseController: NSObject, DatabaseProtocol {
         let timestamp = change.document.data()["Timestamper"] as! Timestamp
         let timestamper = timestamp.dateValue()
         
-        
-        
-        print("New Record: \(change.document.data())")
         let newRecord = HumidTempSonarData()
         newRecord.humidity = humidity
         newRecord.indoorTemperature = indoorTemperature
@@ -143,19 +151,17 @@ class FirebaseController: NSObject, DatabaseProtocol {
         
         }
         listeners.invoke { (listener) in
-            if listener.listenerType == ListenerType.htsRecords{
+            if listener.listenerType == ListenerType.htsRecords || listener.listenerType == ListenerType.all {
                 listener.onHumidTempSonarDataChange(change: .update, htsRecords: humidTempSonarDataList) }
         }
         
     }
     
-
+    
     
     func parseColourRfid(snapshot: QuerySnapshot!) { snapshot.documentChanges.forEach { change in
         
         let docRef = change.document.documentID
-        print("docRef \(docRef)")
-        
         if change.document.data()["Blue"] as? Int == nil
         {
             return
@@ -166,8 +172,6 @@ class FirebaseController: NSObject, DatabaseProtocol {
             return
         }
         
-        
-        
         let blue = change.document.data()["Blue"] as! Int
         let green = change.document.data()["Green"] as! Int
         let rfidInfo = change.document.data()["RFIDInfo"] as! String
@@ -175,7 +179,6 @@ class FirebaseController: NSObject, DatabaseProtocol {
         let timeStamp = change.document.data()["TimeStamp"] as! Timestamp
         let timestamper = timeStamp.dateValue()
         
-        print("New Record: \(change.document.data())")
         let newRecord = ColourRfidData()
         newRecord.blue = blue
         newRecord.green = green
@@ -196,7 +199,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         
         }
         listeners.invoke { (listener) in
-            if listener.listenerType == ListenerType.rfidColourRecords{
+            if listener.listenerType == ListenerType.rfidColourRecords || listener.listenerType == ListenerType.all {
                 listener.onColourRFIDChange(change: .update, rfidColourRecords: colourRfidList) }
         }
     }
@@ -230,14 +233,14 @@ class FirebaseController: NSObject, DatabaseProtocol {
     
     func getRecordByIDColour(reference: String) -> ColourRfidData?{
         for colourRecord in colourRfidList {
-                  if(colourRecord.id == reference) { return colourRecord
-                  }
-                  
-              }
-              
-              return nil
+            if(colourRecord.id == reference) { return colourRecord
+            }
+            
+        }
+        
+        return nil
     }
-         
+    
     
     
     func getRecordByID(reference: String) -> HumidTempSonarData? {
