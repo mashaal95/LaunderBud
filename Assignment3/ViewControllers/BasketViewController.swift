@@ -8,35 +8,34 @@
 
 import UIKit
 import MBCircularProgressBar
+import Firebase
+import FirebaseFirestore
+import FirebaseAuth
+
 
 class BasketViewController: UIViewController, DatabaseListener {
-   
+    
+    
     var listenerType = ListenerType.all
-    weak var databaseController: DatabaseProtocol?
     @IBOutlet weak var circularProgressBar: MBCircularProgressBarView!
+    weak var databaseController: DatabaseProtocol?
     
     @IBOutlet weak var lightLabel: UILabel!
     @IBOutlet weak var darkLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//
-//        redLabel.text = String(LatestReadings.latestColourRfidReadings.red)
-//        blueLabel.text = String(LatestReadings.latestColourRfidReadings.blue)
-//        greenLabel.text = String(LatestReadings.latestColourRfidReadings.green)
-//        rfidLabel.text = String(LatestReadings.latestColourRfidReadings.rfidInfo)
-       
+        
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         databaseController = appDelegate.databaseController
-
+        
         // Do any additional setup after loading the view.
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
-       
         databaseController?.addListener(listener: self)
-       
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -44,7 +43,7 @@ class BasketViewController: UIViewController, DatabaseListener {
     }
     
     func onHumidTempSonarDataChange(change: DatabaseChange, htsRecords: [HumidTempSonarData]) {
-       
+        
         var basketLevel = LatestReadings.latestHumidTempReadings.sonarDistance
         
         
@@ -60,42 +59,50 @@ class BasketViewController: UIViewController, DatabaseListener {
     }
     
     func onColourRFIDChange(change: DatabaseChange, rfidColourRecords: [ColourRfidData]) {
+        var darks = 0
+        var lights = 0
         
-        var allColourReadings = LatestReadings.allColourRfidReadings
-        var lightClothes = 0
-        var darkClothes = 0
-        for readings in allColourReadings
+        
+        
+        
+        for reading in LatestReadings.allColourRfidReadings
         {
-            if(UIColor(red: CGFloat(readings.red), green: CGFloat(readings.green), blue:CGFloat (readings.blue), alpha: 1.0)).isLight
+            if(UIColor(red:CGFloat(reading.red), green:CGFloat(reading.green), blue:CGFloat(reading.blue), alpha:1.0).isLight()!)
             {
-                darkClothes += 1
+                lights += 1
             }
             else
             {
-                lightClothes += 1
+                darks += 1
             }
         }
         
-        lightLabel.text = String(lightClothes)
-        darkLabel.text = String(darkClothes)
+        
+        
+        lightLabel.text = String(lights)
+        darkLabel.text = String(darks)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension UIColor {
-    var isLight: Bool {
-        var white: CGFloat = 0
-        getWhite(&white, alpha: nil)
-        return white > 0.5
+    
+    // Check if the color is light or dark, as defined by the injected lightness threshold.
+    // Some people report that 0.7 is best. I suggest to find out for yourself.
+    // A nil value is returned if the lightness couldn't be determined.
+    func isLight(threshold: Float = 0.9) -> Bool? {
+        let originalCGColor = self.cgColor
+        
+        // Now we need to convert it to the RGB colorspace. UIColor.white / UIColor.black are greyscale and not RGB.
+        // If you don't do this then you will crash when accessing components index 2 below when evaluating greyscale colors.
+        let RGBCGColor = originalCGColor.converted(to: CGColorSpaceCreateDeviceRGB(), intent: .defaultIntent, options: nil)
+        guard let components = RGBCGColor?.components else {
+            return nil
+        }
+        guard components.count >= 3 else {
+            return nil
+        }
+        
+        let brightness = Float(((components[0] * 299) + (components[1] * 587) + (components[2] * 114)) / 1000)
+        return (brightness < threshold)
     }
 }

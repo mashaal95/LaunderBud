@@ -32,10 +32,11 @@
 		0518E969236C635D001354BD /* LatestReadings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0518E968236C635D001354BD /* LatestReadings.swift */; };
 		0518E96B236C6FBD001354BD /* AddSensorDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0518E96A236C6FBD001354BD /* AddSensorDataDelegate.swift */; };
 		0518E96D236C70E3001354BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0518E96C236C70E3001354BD /* GoogleService-Info.plist */; };
-		0518E971236C743D001354BD /* SecondPageTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0518E970236C743D001354BD /* SecondPageTestViewController.swift */; };
 		0518E973236C8CD5001354BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0518E972236C8CD5001354BD /* Main.storyboard */; };
 		05A4DAAB236F171400EBE9CE /* DottedVertical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A4DAAA236F171400EBE9CE /* DottedVertical.swift */; };
 		05A4DAAD236F240F00EBE9CE /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A4DAAC236F240F00EBE9CE /* BasketViewController.swift */; };
+		05C5EA5A2372EE27003672CE /* PileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C5EA592372EE27003672CE /* PileTableViewCell.swift */; };
+		05C5EA5C2372EE2C003672CE /* PileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C5EA5B2372EE2C003672CE /* PileTableViewController.swift */; };
 		AC817135B8A49AEB756DDF71 /* Pods_Assignment3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED3DAEC89F1BDB5CCBD25F9 /* Pods_Assignment3.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,10 +68,11 @@
 		0518E968236C635D001354BD /* LatestReadings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestReadings.swift; sourceTree = "<group>"; };
 		0518E96A236C6FBD001354BD /* AddSensorDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSensorDataDelegate.swift; sourceTree = "<group>"; };
 		0518E96C236C70E3001354BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
-		0518E970236C743D001354BD /* SecondPageTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPageTestViewController.swift; sourceTree = "<group>"; };
 		0518E972236C8CD5001354BD /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		05A4DAAA236F171400EBE9CE /* DottedVertical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DottedVertical.swift; sourceTree = "<group>"; };
 		05A4DAAC236F240F00EBE9CE /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
+		05C5EA592372EE27003672CE /* PileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PileTableViewCell.swift; sourceTree = "<group>"; };
+		05C5EA5B2372EE2C003672CE /* PileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PileTableViewController.swift; sourceTree = "<group>"; };
 		0A7C63B5958EFE02CD893D6B /* Pods-Assignment3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Assignment3.debug.xcconfig"; path = "Target Support Files/Pods-Assignment3/Pods-Assignment3.debug.xcconfig"; sourceTree = "<group>"; };
 		893976220FF6C9E3AB8F617D /* Pods-Assignment3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Assignment3.release.xcconfig"; path = "Target Support Files/Pods-Assignment3/Pods-Assignment3.release.xcconfig"; sourceTree = "<group>"; };
 		9ED3DAEC89F1BDB5CCBD25F9 /* Pods_Assignment3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Assignment3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +138,7 @@
 		0518E948236C518D001354BD /* Assignment3 */ = {
 			isa = PBXGroup;
 			children = (
+				05C5EA582372EDF1003672CE /* Base Classes */,
 				048677922372BC67009D5AC2 /* Weather Files */,
 				0486778523704B0A009D5AC2 /* Map Files */,
 				058D990A237027FC002ED6E8 /* ViewControllers */,
@@ -144,11 +147,7 @@
 				0518E94F236C518E001354BD /* Assets.xcassets */,
 				0518E957236C518E001354BD /* Info.plist */,
 				0518E96C236C70E3001354BD /* GoogleService-Info.plist */,
-				0518E964236C5266001354BD /* HumidTempSonarData.swift */,
-				0518E966236C5283001354BD /* ColourRfidData.swift */,
-				0518E968236C635D001354BD /* LatestReadings.swift */,
 				0518E96A236C6FBD001354BD /* AddSensorDataDelegate.swift */,
-				0518E972236C8CD5001354BD /* Main.storyboard */,
 				05A4DAAA236F171400EBE9CE /* DottedVertical.swift */,
 			);
 			path = Assignment3;
@@ -167,12 +166,24 @@
 		058D990A237027FC002ED6E8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0518E972236C8CD5001354BD /* Main.storyboard */,
 				0407D1C8236E9B1B0030648F /* WeatherViewController.swift */,
 				05A4DAAC236F240F00EBE9CE /* BasketViewController.swift */,
-				0518E970236C743D001354BD /* SecondPageTestViewController.swift */,
 				048677942372E370009D5AC2 /* MapViewController.swift */,
+				05C5EA592372EE27003672CE /* PileTableViewCell.swift */,
+				05C5EA5B2372EE2C003672CE /* PileTableViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		05C5EA582372EDF1003672CE /* Base Classes */ = {
+			isa = PBXGroup;
+			children = (
+				0518E966236C5283001354BD /* ColourRfidData.swift */,
+				0518E964236C5266001354BD /* HumidTempSonarData.swift */,
+				0518E968236C635D001354BD /* LatestReadings.swift */,
+			);
+			path = "Base Classes";
 			sourceTree = "<group>";
 		};
 		2E47299F5E2A1FEB4A446EE7 /* Pods */ = {
@@ -340,11 +351,12 @@
 				0407D1C7236E9ACE0030648F /* DarkSkyApiClient.swift in Sources */,
 				04C3676F236E8F7900BC8D3E /* Weather.swift in Sources */,
 				0518E94A236C518D001354BD /* AppDelegate.swift in Sources */,
+				05C5EA5C2372EE2C003672CE /* PileTableViewController.swift in Sources */,
 				0407D1C5236E9A7A0030648F /* JSONDownloader.swift in Sources */,
 				0518E961236C51F8001354BD /* MulticastDelegate.swift in Sources */,
-				0518E971236C743D001354BD /* SecondPageTestViewController.swift in Sources */,
 				0486778D23715B4D009D5AC2 /* MarkerInfoView.swift in Sources */,
 				04C3676D236E8F6D00BC8D3E /* Coordinate.swift in Sources */,
+				05C5EA5A2372EE27003672CE /* PileTableViewCell.swift in Sources */,
 				05A4DAAD236F240F00EBE9CE /* BasketViewController.swift in Sources */,
 				0486778F23715B57009D5AC2 /* UIViewExtension.swift in Sources */,
 				0518E96B236C6FBD001354BD /* AddSensorDataDelegate.swift in Sources */,

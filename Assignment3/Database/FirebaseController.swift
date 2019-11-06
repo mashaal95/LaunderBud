@@ -25,10 +25,6 @@ class FirebaseController: NSObject, DatabaseProtocol {
     var colourRfidList: [ColourRfidData]
     
     
-    
-    
-    
-    
     override init() {
         // To use Firebase in our application we first must run the FirebaseApp configure method
         FirebaseApp.configure()
@@ -38,7 +34,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         humidTempSonarDataList = [HumidTempSonarData]()
         colourRfidList = [ColourRfidData]()
         
-        //defaultFavourite = Favourite()
+        
         
         super.init()
         
@@ -69,7 +65,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         
         // Setting up listeners for the ColourTempRFID Sensors
         colourRFIDRef = database.collection("RaspberryPi").document("b8:27:eb:76:69:ef").collection("ColourRFID")
-        colourRFIDRef?.addSnapshotListener(includeMetadataChanges: true) { querySnapshot, error in
+        colourRFIDRef?.addSnapshotListener(includeMetadataChanges: false) { querySnapshot, error in
             guard querySnapshot != nil else {
                 print("Error fetching documents: \(error!)")
                 return
@@ -167,25 +163,18 @@ class FirebaseController: NSObject, DatabaseProtocol {
             return
         }
         
-        if change.document.data()["Green"] as? String == nil
-        {
-            return
-        }
-        
-        if change.document.data()["Red"] as? String == nil
-        {
-            return
-        }
-        
         if change.document.data()["RFIDInfo"] as? String == nil
         {
             return
         }
         
-        if change.document.data()["TimeStamp"] as? String == nil
+        
+        if change.document.data()["TimeStamp"] as? Timestamp == nil
         {
             return
         }
+        
+        
         
         let blue = change.document.data()["Blue"] as! Int
         let green = change.document.data()["Green"] as! Int
@@ -201,9 +190,11 @@ class FirebaseController: NSObject, DatabaseProtocol {
         newRecord.red = red
         newRecord.timeStamp = timestamper
         
+        
         newRecord.id = docRef
         colourRfidList.append(newRecord)
         LatestReadings.allColourRfidReadings.append(newRecord)
+        
         //        PerpetualReadings.allReadings.append(newRecord)
         
         
@@ -271,3 +262,4 @@ class FirebaseController: NSObject, DatabaseProtocol {
     
     
 }
+
