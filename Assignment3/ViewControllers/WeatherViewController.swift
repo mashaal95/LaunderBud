@@ -41,6 +41,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Databa
     
     var outdoorTempComparison: Double = 25
     var outdoorHumidityComparison: Double = 48
+    var latestData = HumidTempSonarData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +66,8 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Databa
         dateLabel.text = currentDate
         
         refreshCurrentWeather()
+        
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,27 +80,13 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Databa
     
     func onHumidTempSonarDataChange(change: DatabaseChange, htsRecords: [HumidTempSonarData]) {
         //populate indoor labels with latest data from firebase
-        let latestData = LatestReadings.latestHumidTempReadings
+        latestData = LatestReadings.latestHumidTempReadings
         
         if latestData != nil {
             self.indoorHumidityLabel.text = "\(latestData.humidity) %"
             self.indoorTemperatureLabel.text = "\(latestData.indoorTemperature) ºC"
             
-            if outdoorTempComparison > latestData.indoorTemperature && outdoorHumidityComparison < latestData.humidity {
-                dryingConclusionLabel.text = "Outdoor drying strong advised"
-            }
-            
-            if outdoorTempComparison > latestData.indoorTemperature && outdoorHumidityComparison > latestData.humidity {
-                dryingConclusionLabel.text = "Indoor drying advised"
-            }
-            
-            if outdoorTempComparison < latestData.indoorTemperature && outdoorHumidityComparison < latestData.humidity {
-                dryingConclusionLabel.text = "Outdoor drying advised"
-            }
-            
-            if outdoorTempComparison < latestData.indoorTemperature && outdoorHumidityComparison > latestData.humidity {
-                dryingConclusionLabel.text = "Indoor drying strong advised"
-            }
+
         }
     }
     
@@ -145,7 +134,10 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Databa
         outdoorPressureLabel.text = viewModel.pressure
         
         outdoorTempComparison = viewModel.doubleTemperature
+        print("outdoorTempComparison \(outdoorTempComparison)")
         outdoorHumidityComparison = viewModel.doubleHumidity
+        print("outdoorHumidityComparison \(outdoorHumidityComparison)")
+
     }
     
     @IBAction func refreshCurrentWeather() {
@@ -157,6 +149,42 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Databa
                         print(currentWeather)
                         let viewModel = CurrentWeatherViewModel(model: currentWeather)
                         self.displayWeather(using: viewModel)
+                        
+                        if LatestReadings.latestHumidTempReadings != nil {
+                            
+                            
+                            if self.outdoorTempComparison > LatestReadings.latestHumidTempReadings.indoorTemperature && self.outdoorHumidityComparison < LatestReadings.latestHumidTempReadings.humidity {
+                                print("Outdoor temperature is \(self.outdoorTempComparison)")
+                                print("Indoor temperature is \(LatestReadings.latestHumidTempReadings.indoorTemperature)")
+                                print("Outdoor humidity is \(self.outdoorHumidityComparison)")
+                                print("Indoor humidity is \(LatestReadings.latestHumidTempReadings.humidity)")
+                                self.dryingConclusionLabel.text = "Outdoor drying strong advised"
+                            }
+                            
+                            if self.outdoorTempComparison > LatestReadings.latestHumidTempReadings.indoorTemperature && self.outdoorHumidityComparison > LatestReadings.latestHumidTempReadings.humidity {
+                                print("Outdoor temperature is \(self.outdoorTempComparison)")
+                                print("Indoor temperature is \(LatestReadings.latestHumidTempReadings.indoorTemperature)")
+                                print("Outdoor humidity is \(self.outdoorHumidityComparison)")
+                                print("Indoor humidity is \(LatestReadings.latestHumidTempReadings.humidity)")
+                                self.dryingConclusionLabel.text = "Indoor drying advised"
+                            }
+                            
+                            if self.outdoorTempComparison < LatestReadings.latestHumidTempReadings.indoorTemperature && self.outdoorHumidityComparison < LatestReadings.latestHumidTempReadings.humidity {
+                                print("Outdoor temperature is \(self.outdoorTempComparison)")
+                                print("Indoor temperature is \(LatestReadings.latestHumidTempReadings.indoorTemperature)")
+                                print("Outdoor humidity is \(self.outdoorHumidityComparison)")
+                                print("Indoor humidity is \(LatestReadings.latestHumidTempReadings.humidity)")
+                                self.dryingConclusionLabel.text = "Outdoor drying advised"
+                            }
+                            
+                            if self.outdoorTempComparison < LatestReadings.latestHumidTempReadings.indoorTemperature && self.outdoorHumidityComparison > LatestReadings.latestHumidTempReadings.humidity {
+                                print("Outdoor temperature is \(self.outdoorTempComparison)")
+                                print("Indoor temperature is \(LatestReadings.latestHumidTempReadings.indoorTemperature)")
+                                print("Outdoor humidity is \(self.outdoorHumidityComparison)")
+                                print("Indoor humidity is \(LatestReadings.latestHumidTempReadings.humidity)")
+                                self.dryingConclusionLabel.text = "Indoor drying strong advised"
+                            }
+                        }
                     }
                 }
         
