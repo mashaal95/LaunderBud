@@ -15,6 +15,7 @@ struct CurrentWeather: Codable {
     let precipProbability: Double
     let summary: String
     let icon: String
+    let pressure: Double
 }
 
 extension CurrentWeather{

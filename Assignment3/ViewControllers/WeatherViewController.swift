@@ -9,14 +9,24 @@
 import UIKit
 import CoreLocation
 
-class WeatherViewController: UIViewController, CLLocationManagerDelegate {
-
+class WeatherViewController: UIViewController, CLLocationManagerDelegate, DatabaseListener {
     
-    @IBOutlet weak var outdoorLocationName: UILabel!
+    
+    @IBOutlet weak var indoorPressureLabel: UILabel!
+    @IBOutlet weak var indoorHumidityLabel: UILabel!
+    @IBOutlet weak var indoorTemperatureLabel: UILabel!
+    @IBOutlet weak var outdoorWeatherIcon: UIImageView!
+    @IBOutlet weak var dryingConclusionLabel: UILabel!
+
     @IBOutlet weak var refreshOutdoorWeather: UIButton!
     @IBOutlet weak var outdoorTemperatureLabel: UILabel!
-    @IBOutlet weak var outdoorWeatherIcon: UIImageView!
+
+    @IBOutlet weak var outdoorLocationName: UILabel!
+    
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var outdoorHumidityLabel: UILabel!
+   
+    @IBOutlet weak var outdoorPressureLabel: UILabel!
     @IBOutlet weak var outdoorPrecipProbabilityLabel: UILabel!
     @IBOutlet weak var outdoorWeatherSummary: UILabel!
     
@@ -26,9 +36,15 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     var lat: Double = -37.8770
     var long: Double = 145.0449
     
+    var listenerType = ListenerType.htsRecords
+    weak var databaseController: DatabaseProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        databaseController = appDelegate.databaseController
+        
         //Core Location Manager asking for GPS location
         locManager.delegate = self
         locManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -38,9 +54,38 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             locManager.startUpdatingLocation()
         }
 
+        //obtaining current date
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yyyy"
+        let currentDate = formatter.string(from: date)
+        dateLabel.text = currentDate
         
         refreshCurrentWeather()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        databaseController?.addListener(listener: self)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        databaseController?.removeListener(listener: self)
+    }
+    
+    func onHumidTempSonarDataChange(change: DatabaseChange, htsRecords: [HumidTempSonarData]) {
+        //populate indoor labels with latest data from firebase
+        var latestData = LatestReadings.latestHumidTempReadings
+        
+        if latestData != nil {
+            self.indoorHumidityLabel.text = "\(latestData.humidity) %"
+            self.indoorTemperatureLabel.text = "\(latestData.indoorTemperature) ºC"
+        }
+    }
+    
+    func onColourRFIDChange(change: DatabaseChange, rfidColourRecords: [ColourRfidData]) {
+        //nothing to change
+    }
+    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation :CLLocation = locations[0] as CLLocation
@@ -78,6 +123,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         outdoorHumidityLabel.text = viewModel.humidity
         outdoorPrecipProbabilityLabel.text = viewModel.precipitationProbability
         outdoorWeatherSummary.text = viewModel.summary
+        outdoorPressureLabel.text = viewModel.pressure
         
     }
     
