@@ -39,6 +39,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Databa
     var listenerType = ListenerType.htsRecords
     weak var databaseController: DatabaseProtocol?
     
+    var outdoorTempComparison: Double = 25
+    var outdoorHumidityComparison: Double = 48
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -74,11 +77,27 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Databa
     
     func onHumidTempSonarDataChange(change: DatabaseChange, htsRecords: [HumidTempSonarData]) {
         //populate indoor labels with latest data from firebase
-        var latestData = LatestReadings.latestHumidTempReadings
+        let latestData = LatestReadings.latestHumidTempReadings
         
         if latestData != nil {
             self.indoorHumidityLabel.text = "\(latestData.humidity) %"
             self.indoorTemperatureLabel.text = "\(latestData.indoorTemperature) ºC"
+            
+            if outdoorTempComparison > latestData.indoorTemperature && outdoorHumidityComparison < latestData.humidity {
+                dryingConclusionLabel.text = "Outdoor drying strong advised"
+            }
+            
+            if outdoorTempComparison > latestData.indoorTemperature && outdoorHumidityComparison > latestData.humidity {
+                dryingConclusionLabel.text = "Indoor drying advised"
+            }
+            
+            if outdoorTempComparison < latestData.indoorTemperature && outdoorHumidityComparison < latestData.humidity {
+                dryingConclusionLabel.text = "Outdoor drying advised"
+            }
+            
+            if outdoorTempComparison < latestData.indoorTemperature && outdoorHumidityComparison > latestData.humidity {
+                dryingConclusionLabel.text = "Indoor drying strong advised"
+            }
         }
     }
     
@@ -125,6 +144,8 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Databa
         outdoorWeatherSummary.text = viewModel.summary
         outdoorPressureLabel.text = viewModel.pressure
         
+        outdoorTempComparison = viewModel.doubleTemperature
+        outdoorHumidityComparison = viewModel.doubleHumidity
     }
     
     @IBAction func refreshCurrentWeather() {

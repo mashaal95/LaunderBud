@@ -10,13 +10,13 @@
 		0407D1C5236E9A7A0030648F /* JSONDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407D1C4236E9A7A0030648F /* JSONDownloader.swift */; };
 		0407D1C7236E9ACE0030648F /* DarkSkyApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407D1C6236E9ACE0030648F /* DarkSkyApiClient.swift */; };
 		0407D1C9236E9B1B0030648F /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407D1C8236E9B1B0030648F /* WeatherViewController.swift */; };
-		04867784237048F7009D5AC2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04867783237048F7009D5AC2 /* MapViewController.swift */; };
-		0486778723704C4D009D5AC2 /* PlaceMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0486778623704C4D009D5AC2 /* PlaceMarker.swift */; };
-		0486778923704C8F009D5AC2 /* GooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0486778823704C8F009D5AC2 /* GooglePlace.swift */; };
-		0486778B23704DFB009D5AC2 /* GoogleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0486778A23704DFB009D5AC2 /* GoogleDataProvider.swift */; };
 		0486778D23715B4D009D5AC2 /* MarkerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0486778C23715B4D009D5AC2 /* MarkerInfoView.swift */; };
 		0486778F23715B57009D5AC2 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0486778E23715B57009D5AC2 /* UIViewExtension.swift */; };
 		0486779123715B5D009D5AC2 /* MarkerInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0486779023715B5D009D5AC2 /* MarkerInfoView.xib */; };
+		048677952372E371009D5AC2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048677942372E370009D5AC2 /* MapViewController.swift */; };
+		048677972372E3F5009D5AC2 /* GoogleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048677962372E3F5009D5AC2 /* GoogleDataProvider.swift */; };
+		048677992372E405009D5AC2 /* GooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048677982372E405009D5AC2 /* GooglePlace.swift */; };
+		0486779B2372E418009D5AC2 /* PlaceMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0486779A2372E418009D5AC2 /* PlaceMarker.swift */; };
 		04C36769236E8DA300BC8D3E /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C36768236E8DA300BC8D3E /* CurrentWeather.swift */; };
 		04C3676B236E8F3700BC8D3E /* CurrentWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C3676A236E8F3700BC8D3E /* CurrentWeatherViewModel.swift */; };
 		04C3676D236E8F6D00BC8D3E /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C3676C236E8F6D00BC8D3E /* Coordinate.swift */; };
@@ -43,13 +43,13 @@
 		0407D1C4236E9A7A0030648F /* JSONDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDownloader.swift; sourceTree = "<group>"; };
 		0407D1C6236E9ACE0030648F /* DarkSkyApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkSkyApiClient.swift; sourceTree = "<group>"; };
 		0407D1C8236E9B1B0030648F /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
-		04867783237048F7009D5AC2 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = ../../../../Downloads/MapViewController.swift; sourceTree = "<group>"; };
-		0486778623704C4D009D5AC2 /* PlaceMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlaceMarker.swift; path = ../../../../Downloads/PlaceMarker.swift; sourceTree = "<group>"; };
-		0486778823704C8F009D5AC2 /* GooglePlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GooglePlace.swift; path = ../../../../Downloads/GooglePlace.swift; sourceTree = "<group>"; };
-		0486778A23704DFB009D5AC2 /* GoogleDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoogleDataProvider.swift; path = ../../../../Downloads/GoogleDataProvider.swift; sourceTree = "<group>"; };
 		0486778C23715B4D009D5AC2 /* MarkerInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerInfoView.swift; sourceTree = "<group>"; };
 		0486778E23715B57009D5AC2 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		0486779023715B5D009D5AC2 /* MarkerInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarkerInfoView.xib; sourceTree = "<group>"; };
+		048677942372E370009D5AC2 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		048677962372E3F5009D5AC2 /* GoogleDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDataProvider.swift; sourceTree = "<group>"; };
+		048677982372E405009D5AC2 /* GooglePlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlace.swift; sourceTree = "<group>"; };
+		0486779A2372E418009D5AC2 /* PlaceMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMarker.swift; sourceTree = "<group>"; };
 		04C36768236E8DA300BC8D3E /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
 		04C3676A236E8F3700BC8D3E /* CurrentWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherViewModel.swift; sourceTree = "<group>"; };
 		04C3676C236E8F6D00BC8D3E /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
@@ -94,9 +94,9 @@
 				0486778C23715B4D009D5AC2 /* MarkerInfoView.swift */,
 				0486779023715B5D009D5AC2 /* MarkerInfoView.xib */,
 				0486778E23715B57009D5AC2 /* UIViewExtension.swift */,
-				0486778623704C4D009D5AC2 /* PlaceMarker.swift */,
-				0486778823704C8F009D5AC2 /* GooglePlace.swift */,
-				0486778A23704DFB009D5AC2 /* GoogleDataProvider.swift */,
+				048677982372E405009D5AC2 /* GooglePlace.swift */,
+				0486779A2372E418009D5AC2 /* PlaceMarker.swift */,
+				048677962372E3F5009D5AC2 /* GoogleDataProvider.swift */,
 			);
 			path = "Map Files";
 			sourceTree = "<group>";
@@ -170,7 +170,7 @@
 				0407D1C8236E9B1B0030648F /* WeatherViewController.swift */,
 				05A4DAAC236F240F00EBE9CE /* BasketViewController.swift */,
 				0518E970236C743D001354BD /* SecondPageTestViewController.swift */,
-				04867783237048F7009D5AC2 /* MapViewController.swift */,
+				048677942372E370009D5AC2 /* MapViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -326,11 +326,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0486779B2372E418009D5AC2 /* PlaceMarker.swift in Sources */,
+				048677992372E405009D5AC2 /* GooglePlace.swift in Sources */,
+				048677972372E3F5009D5AC2 /* GoogleDataProvider.swift in Sources */,
+				048677952372E371009D5AC2 /* MapViewController.swift in Sources */,
 				0518E963236C5205001354BD /* FirebaseController.swift in Sources */,
 				0407D1C9236E9B1B0030648F /* WeatherViewController.swift in Sources */,
-				0486778923704C8F009D5AC2 /* GooglePlace.swift in Sources */,
 				04C36769236E8DA300BC8D3E /* CurrentWeather.swift in Sources */,
-				04867784237048F7009D5AC2 /* MapViewController.swift in Sources */,
 				0518E95F236C51ED001354BD /* DatabaseProtocol.swift in Sources */,
 				05A4DAAB236F171400EBE9CE /* DottedVertical.swift in Sources */,
 				0518E967236C5283001354BD /* ColourRfidData.swift in Sources */,
@@ -338,13 +340,11 @@
 				0407D1C7236E9ACE0030648F /* DarkSkyApiClient.swift in Sources */,
 				04C3676F236E8F7900BC8D3E /* Weather.swift in Sources */,
 				0518E94A236C518D001354BD /* AppDelegate.swift in Sources */,
-				0486778B23704DFB009D5AC2 /* GoogleDataProvider.swift in Sources */,
 				0407D1C5236E9A7A0030648F /* JSONDownloader.swift in Sources */,
 				0518E961236C51F8001354BD /* MulticastDelegate.swift in Sources */,
 				0518E971236C743D001354BD /* SecondPageTestViewController.swift in Sources */,
 				0486778D23715B4D009D5AC2 /* MarkerInfoView.swift in Sources */,
 				04C3676D236E8F6D00BC8D3E /* Coordinate.swift in Sources */,
-				0486778723704C4D009D5AC2 /* PlaceMarker.swift in Sources */,
 				05A4DAAD236F240F00EBE9CE /* BasketViewController.swift in Sources */,
 				0486778F23715B57009D5AC2 /* UIViewExtension.swift in Sources */,
 				0518E96B236C6FBD001354BD /* AddSensorDataDelegate.swift in Sources */,

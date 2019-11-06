@@ -15,6 +15,8 @@ struct CurrentWeatherViewModel {
     let summary: String
     let icon: UIImage
     let pressure: String
+    let doubleTemperature: Double
+    let doubleHumidity: Double
     
     init (model: CurrentWeather){
         let convertedTemperature = (model.temperature - 32)/1.8
@@ -34,5 +36,9 @@ struct CurrentWeatherViewModel {
         let convertedPressure = model.pressure/10
         let convertedPressureString = String(format: "%.1f", convertedPressure)
         self.pressure = "\(convertedPressureString) kPa"
+        
+        self.doubleTemperature = convertedTemperature
+        
+        self.doubleHumidity = model.humidity * 100
     }
 }
