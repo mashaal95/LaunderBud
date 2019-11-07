@@ -174,8 +174,6 @@ class FirebaseController: NSObject, DatabaseProtocol {
             return
         }
         
-        
-        
         let blue = change.document.data()["Blue"] as! Int
         let green = change.document.data()["Green"] as! Int
         let rfidInfo = change.document.data()["RFIDInfo"] as! String
@@ -183,21 +181,62 @@ class FirebaseController: NSObject, DatabaseProtocol {
         let timeStamp = change.document.data()["TimeStamp"] as! Timestamp
         let timestamper = timeStamp.dateValue()
         
-        let newRecord = ColourRfidData()
-        newRecord.blue = blue
-        newRecord.green = green
-        newRecord.rfidInfo = rfidInfo
-        newRecord.red = red
-        newRecord.timeStamp = timestamper
+        if change.type == .added {
+            
+            let newRecord = ColourRfidData()
+            newRecord.blue = blue
+            newRecord.green = green
+            newRecord.rfidInfo = rfidInfo
+            newRecord.red = red
+            newRecord.timeStamp = timestamper
+            
+            
+            newRecord.id = docRef
+            colourRfidList.append(newRecord)
+            LatestReadings.allColourRfidReadings.append(newRecord)
+            
+        }
         
+        if change.type == .modified {
+            
+            print("Updated ColourRFID: \(change.document.data())")
+//            let index = getHeroIndexByID(reference: documentRef)!
+//            heroList[index].name = name
+//            heroList[index].abilities = abilities
+//            heroList[index].id = documentRef
+            let index = getRecordIndexByIDColour(reference: docRef)!
+            colourRfidList[index].blue = blue
+            LatestReadings.allColourRfidReadings[index].blue = blue
+            
+            colourRfidList[index].green = green
+            LatestReadings.allColourRfidReadings[index].green = green
+            
+            colourRfidList[index].red = red
+            LatestReadings.allColourRfidReadings[index].red = red
+            
+            colourRfidList[index].rfidInfo = rfidInfo
+            LatestReadings.allColourRfidReadings[index].rfidInfo = rfidInfo
+            
+            colourRfidList[index].timeStamp = timeStamp.dateValue()
+            LatestReadings.allColourRfidReadings[index].timeStamp = timeStamp.dateValue()
+            
+            colourRfidList[index].id = docRef
+            LatestReadings.allColourRfidReadings[index].id = docRef
+        }
         
-        newRecord.id = docRef
-        colourRfidList.append(newRecord)
-        LatestReadings.allColourRfidReadings.append(newRecord)
-        
-        //        PerpetualReadings.allReadings.append(newRecord)
-        
-        
+        if change.type == .removed {
+//            print("Removed Hero: \(change.document.data())")
+//            if let index = getHeroIndexByID(reference: documentRef) {
+//                heroList.remove(at: index)
+//            }
+//        }
+            print("Removed colourRFID record: \(change.document.data())")
+            if let index = getRecordIndexByIDColour(reference: docRef){
+                colourRfidList.remove(at: index)
+                LatestReadings.allColourRfidReadings.remove(at: index)
+            }
+        }
+       
         //Taking the latest readings for the humidity and temperature, also for the level of clothes in the basket
         if LatestReadings.allColourRfidReadings.count > 0 {
             LatestReadings.latestColourRfidReadings = LatestReadings.allColourRfidReadings.last!
