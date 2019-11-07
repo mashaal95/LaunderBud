@@ -10,7 +10,6 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 
-//This is Mashaal's Git!
 
 
 class FirebaseController: NSObject, DatabaseProtocol {
@@ -136,7 +135,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         newRecord.id = documentRef
         humidTempSonarDataList.append(newRecord)
         LatestReadings.allHumidTempReadings.append(newRecord)
-        //PerpetualReadings.allReadings.append(newRecord)
+      
         
         
         //Taking the latest readings for the humidity and temperature, also for the level of clothes in the basket
@@ -200,10 +199,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         if change.type == .modified {
             
             print("Updated ColourRFID: \(change.document.data())")
-//            let index = getHeroIndexByID(reference: documentRef)!
-//            heroList[index].name = name
-//            heroList[index].abilities = abilities
-//            heroList[index].id = documentRef
+
             let index = getRecordIndexByIDColour(reference: docRef)!
             colourRfidList[index].blue = blue
             LatestReadings.allColourRfidReadings[index].blue = blue
