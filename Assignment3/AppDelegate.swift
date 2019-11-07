@@ -24,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         databaseController = FirebaseController()
         
+        //Enabling persistence for Firebase
+        FirestoreSettings().isPersistenceEnabled = true
+        
         GMSServices.provideAPIKey(googleApiKey)
 
         return true
