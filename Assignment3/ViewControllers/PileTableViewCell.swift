@@ -12,6 +12,7 @@ class PileTableViewCell: UITableViewCell {
 
   
 
+    @IBOutlet weak var colourImageView: UIImageView!
     
     @IBOutlet weak var timeLabel: UILabel!
     

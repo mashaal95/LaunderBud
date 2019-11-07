@@ -537,14 +537,15 @@
                                             <color key="textColor" red="0.69803921570000005" green="0.87450980389999999" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-clothes-lighter" translatesAutoresizingMaskIntoConstraints="NO" id="o6c-SA-Mmy">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-clothes-dark" translatesAutoresizingMaskIntoConstraints="NO" id="o6c-SA-Mmy">
                                             <rect key="frame" x="28" y="18" width="98" height="163.5"/>
+                                            <color key="tintColor" red="0.92169016599999998" green="0.44632411" blue="0.47622323039999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="98" id="fUy-g7-afJ"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zara Shirt" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5A-o1-0zb">
-                                            <rect key="frame" x="255" y="54.5" width="118" height="33.5"/>
+                                            <rect key="frame" x="255" y="41" width="118" height="33.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                             <color key="textColor" red="0.69803921570000005" green="0.87450980389999999" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -561,16 +562,17 @@
                                         <constraint firstItem="FOd-WP-Ksr" firstAttribute="top" secondItem="gXo-Jl-78g" secondAttribute="bottom" constant="3.5" id="7Qv-ko-aoO"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="FOd-WP-Ksr" secondAttribute="trailing" constant="21" id="87m-dw-25i"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="FOd-WP-Ksr" secondAttribute="bottom" constant="16" id="ECN-rO-dFt"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="f5A-o1-0zb" secondAttribute="trailing" constant="21" id="RGd-IZ-3PB"/>
                                         <constraint firstItem="o6c-SA-Mmy" firstAttribute="top" secondItem="cSW-re-wWo" secondAttribute="topMargin" constant="7" id="bmL-7f-3Tj"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="f5A-o1-0zb" secondAttribute="trailing" constant="21" id="kPm-7b-W0l"/>
+                                        <constraint firstItem="f5A-o1-0zb" firstAttribute="top" secondItem="cSW-re-wWo" secondAttribute="topMargin" constant="30" id="liY-eO-bU9"/>
                                         <constraint firstItem="o6c-SA-Mmy" firstAttribute="leading" secondItem="cSW-re-wWo" secondAttribute="leadingMargin" constant="8" id="mwU-aj-3oR"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="gXo-Jl-78g" secondAttribute="trailing" constant="21" id="nCw-ai-4Nf"/>
-                                        <constraint firstItem="gXo-Jl-78g" firstAttribute="top" secondItem="f5A-o1-0zb" secondAttribute="bottom" constant="44" id="qmx-dg-1zL"/>
                                         <constraint firstItem="FOd-WP-Ksr" firstAttribute="leading" secondItem="o6c-SA-Mmy" secondAttribute="trailing" constant="53" id="xHV-V0-azr"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.14901960780000001" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
+                                    <outlet property="colourImageView" destination="o6c-SA-Mmy" id="3oN-aW-25l"/>
                                     <outlet property="rfidLabel" destination="f5A-o1-0zb" id="hlk-CL-Sa9"/>
                                     <outlet property="timeLabel" destination="FOd-WP-Ksr" id="OoF-m3-Sap"/>
                                 </connections>
