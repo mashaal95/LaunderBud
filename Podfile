@@ -10,7 +10,6 @@ target 'Assignment3' do
 	pod 'Firebase/Auth'
 	pod 'Firebase/Firestore'
 	pod 'Firebase/Storage'
-	pod 'MaterialComponents'
 	pod 'MBCircularProgressBar'
 	pod 'GoogleMaps'
 	pod 'SwiftyJSON'

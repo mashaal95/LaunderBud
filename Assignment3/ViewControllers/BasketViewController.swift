@@ -82,6 +82,21 @@ class BasketViewController: UIViewController, DatabaseListener {
         lightLabel.text = String(lights)
         darkLabel.text = String(darks)
     }
+    
+    
+    @IBAction func clearBasket(_ sender: Any) {
+        
+        for reading in LatestReadings.allColourRfidReadings
+        {
+    databaseController?.deleteColourRFID(rfidColourRecord: reading)
+        }
+    
+        
+    }
+    
+    
+    
+    
 }
 
 extension UIColor {
