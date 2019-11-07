@@ -22,7 +22,7 @@ class PileTableViewController: UITableViewController, DatabaseListener {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         databaseController = appDelegate.databaseController
         
-        
+        self.tableView.rowHeight = 150
     }
     
     
