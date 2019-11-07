@@ -12,6 +12,7 @@ class PileTableViewController: UITableViewController, DatabaseListener {
     
     var index: Int!
     let SECTION_RECORDS = 0;
+    let SECTION_PARTY = 0;
     let SECTION_COUNT = 1;
     let CELL_RECORD = "colourCell"
     var all: [ColourRfidData] = []
@@ -80,6 +81,12 @@ class PileTableViewController: UITableViewController, DatabaseListener {
         
         
         return colourRfidCell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete && indexPath.section == SECTION_PARTY {
+            databaseController?.deleteColourRFID(rfidColourRecord: all[indexPath.row]) }
+        
     }
     
     
