@@ -225,11 +225,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         }
         
         if change.type == .removed {
-//            print("Removed Hero: \(change.document.data())")
-//            if let index = getHeroIndexByID(reference: documentRef) {
-//                heroList.remove(at: index)
-//            }
-//        }
+
             print("Removed colourRFID record: \(change.document.data())")
             if let index = getRecordIndexByIDColour(reference: docRef){
                 colourRfidList.remove(at: index)
