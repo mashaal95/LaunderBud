@@ -19,4 +19,5 @@ class HumidTempSonarData: Equatable {
     var indoorTemperature: Double = 255
     var sonarDistance: Double  = 255
     var timeStamp: Date = Date()
+    var pressure: Double = 101.3
 }

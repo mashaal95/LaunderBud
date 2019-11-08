@@ -116,6 +116,11 @@ class FirebaseController: NSObject, DatabaseProtocol {
             return
         }
         
+        if change.document.data()["Pressure"] as? Double == nil
+        {
+            return
+        }
+        
         if change.document.data()["SonarDistance"] as? Double == nil
         {
             return
@@ -126,13 +131,16 @@ class FirebaseController: NSObject, DatabaseProtocol {
         let sonarDistance = change.document.data()["SonarDistance"] as! Double
         let timestamp = change.document.data()["Timestamper"] as! Timestamp
         let timestamper = timestamp.dateValue()
+        let pressure = change.document.data()["Pressure"] as! Double
         
         let newRecord = HumidTempSonarData()
         newRecord.humidity = humidity
         newRecord.indoorTemperature = indoorTemperature
         newRecord.sonarDistance = sonarDistance
         newRecord.timeStamp = timestamper
+        newRecord.pressure = pressure
         newRecord.id = documentRef
+        
         humidTempSonarDataList.append(newRecord)
         LatestReadings.allHumidTempReadings.append(newRecord)
       

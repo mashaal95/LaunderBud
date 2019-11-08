@@ -84,7 +84,12 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Databa
         
         if latestData != nil {
             self.indoorHumidityLabel.text = "\(latestData.humidity) %"
-            self.indoorTemperatureLabel.text = "\(latestData.indoorTemperature) ºC"
+            
+            let indoorTempString = String(format: "%.1f", latestData.indoorTemperature)
+            self.indoorTemperatureLabel.text = "\(indoorTempString) ºC"
+            
+            let indoorPressureString = String(format: "%.1f", latestData.pressure)
+            self.indoorPressureLabel.text = "\(indoorPressureString) kPa"
             
 
         }
@@ -158,7 +163,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Databa
                                 print("Indoor temperature is \(LatestReadings.latestHumidTempReadings.indoorTemperature)")
                                 print("Outdoor humidity is \(self.outdoorHumidityComparison)")
                                 print("Indoor humidity is \(LatestReadings.latestHumidTempReadings.humidity)")
-                                self.dryingConclusionLabel.text = "Outdoor drying strong advised"
+                                self.dryingConclusionLabel.text = "Outdoor drying strongly advised"
                             }
                             
                             if self.outdoorTempComparison > LatestReadings.latestHumidTempReadings.indoorTemperature && self.outdoorHumidityComparison > LatestReadings.latestHumidTempReadings.humidity {
@@ -182,7 +187,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Databa
                                 print("Indoor temperature is \(LatestReadings.latestHumidTempReadings.indoorTemperature)")
                                 print("Outdoor humidity is \(self.outdoorHumidityComparison)")
                                 print("Indoor humidity is \(LatestReadings.latestHumidTempReadings.humidity)")
-                                self.dryingConclusionLabel.text = "Indoor drying strong advised"
+                                self.dryingConclusionLabel.text = "Indoor drying strongly advised"
                             }
                         }
                     }
