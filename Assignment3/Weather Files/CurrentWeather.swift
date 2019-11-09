@@ -2,13 +2,15 @@
 //  CurrentWeather.swift
 //  Assignment3
 //
-//  Created by MAC on 3/11/19.
+//  Created by Laveeshka on 3/11/19.
 //  Copyright © 2019 Monash. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
+//CurrentWeather struct of type Codable.
+//It has temperature, humidity, precipProbability, summary, icon and pressure as properties
 struct CurrentWeather: Codable {
     let temperature: Double
     let humidity: Double
@@ -18,6 +20,7 @@ struct CurrentWeather: Codable {
     let pressure: Double
 }
 
+//defines a UIImage variable. The icon which name matches with the icon string value is returned
 extension CurrentWeather{
     var iconImage: UIImage {
         switch icon {

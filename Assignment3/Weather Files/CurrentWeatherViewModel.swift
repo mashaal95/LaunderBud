@@ -2,12 +2,16 @@
 //  CurrentWeatherViewModel.swift
 //  Assignment3
 //
-//  Created by MAC on 3/11/19.
+//  Created by Laveeshka on 3/11/19.
 //  Copyright © 2019 Monash. All rights reserved.
 //
 import Foundation
 import UIKit
 
+//CurrentWeatherViewModel struct. It takes a CurrentWeather object in the initialiser
+//this struct formats the way that the weather api data should be displayed on the screen
+//it handles important conversion as well such converting the temperature from Fahrenheit to
+//degrees Celsius
 struct CurrentWeatherViewModel {
     let temperature: String
     let humidity: String

@@ -11,7 +11,7 @@ import CoreLocation
 
 class WeatherViewController: UIViewController, CLLocationManagerDelegate, DatabaseListener {
     
-    
+    //all the label outlets are defined here
     @IBOutlet weak var indoorPressureLabel: UILabel!
     @IBOutlet weak var indoorHumidityLabel: UILabel!
     @IBOutlet weak var indoorTemperatureLabel: UILabel!

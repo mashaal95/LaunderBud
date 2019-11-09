@@ -2,14 +2,20 @@
 //  DarkSkyApiClient.swift
 //  Assignment3
 //
-//  Created by MAC on 3/11/19.
+//  Created by Laveeshka on 3/11/19.
 //  Copyright © 2019 Monash. All rights reserved.
 //
 import Foundation
 
+//this class deals with communicating with DarkSky Weather API
+//
+//code referenced from https://teamtreehouse.com/library/build-a-weather-app-5
+
 class DarkSkyApiClient {
     
+    //my API key
     fileprivate let darkSkyApiKey = "8808944ad2a7b4ed23c378de927db3aa"
+    
     
     lazy var baseUrl: URL = {
         return URL(string: "https://api.darksky.net/forecast/\(self.darkSkyApiKey)/")!
@@ -29,6 +35,7 @@ class DarkSkyApiClient {
     
     typealias WeatherCompletionHandler = (Weather?, Error?) -> Void
     typealias CurrentWeatherCompletionHandler = (CurrentWeather?, Error?) -> Void
+    
     
     private func getWeather(at coordinate: Coordinate, completionHandler completion: @escaping WeatherCompletionHandler) {
         
