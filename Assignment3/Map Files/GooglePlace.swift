@@ -2,9 +2,11 @@
 //  GooglePlace.swift
 //  Assignment3
 //
-//  Created by MAC on 4/11/19.
+//  Created by Laveeshka on 4/11/19.
 //  Copyright © 2019 Monash. All rights reserved.
 //
+// this a model class for coin laundry results returned from Google
+// code referenced from https://www.raywenderlich.com/197-google-maps-ios-sdk-tutorial-getting-started
 
 import UIKit
 import Foundation

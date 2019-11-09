@@ -3,8 +3,10 @@
 //  Assignment3
 //
 //  Created by Laveeshka on 4/11/19.
-//  Copyright © 2019 Monash. All rights reserved.
 //
+// class for making Google API calls
+// code referenced from https://www.raywenderlich.com/197-google-maps-ios-sdk-tutorial-getting-started
+
 import UIKit
 import Foundation
 import CoreLocation

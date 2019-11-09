@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import GoogleMaps
 
+//constant holding my google API key
 let googleApiKey = "AIzaSyDqSusXXp0WaAFQ4r3ORsZNZlfB-clzP0Q"
 
 @UIApplicationMain
@@ -27,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Enabling persistence for Firebase
         FirestoreSettings().isPersistenceEnabled = true
         
+        //instantiating Google Maps services with API key
         GMSServices.provideAPIKey(googleApiKey)
 
         return true

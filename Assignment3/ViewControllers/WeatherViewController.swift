@@ -2,7 +2,7 @@
 //  WeatherViewController.swift
 //  Assignment3
 //
-//  Created by Mashaal & Laveeshka on 3/11/19.
+//  Created by Laveeshka on 3/11/19.
 //  Copyright © 2019 Monash. All rights reserved.
 //
 
@@ -30,6 +30,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Databa
     @IBOutlet weak var outdoorPrecipProbabilityLabel: UILabel!
     @IBOutlet weak var outdoorWeatherSummary: UILabel!
     
+    //creating a DarkSkyApiClient variable to call its methods
     let client = DarkSkyApiClient()
     
     var locManager = CLLocationManager()
@@ -59,25 +60,31 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Databa
         }
         
         //obtaining current date
+        // referenced from https://stackoverflow.com/questions/39513258/get-current-date-in-swift-3
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy"
         let currentDate = formatter.string(from: date)
         dateLabel.text = currentDate
         
+        //this method obtains the latest outdoor weather and displays
+        //the data appropriately on the screen
         refreshCurrentWeather()
         
         
     }
     
+    //start listening for database changes whenever this view is about to be added to the view hierarchy
     override func viewWillAppear(_ animated: Bool) {
         databaseController?.addListener(listener: self)
     }
     
+    //stop listening for database changes whenever this view is about to be removed from the view hierarchy
     override func viewWillDisappear(_ animated: Bool) {
         databaseController?.removeListener(listener: self)
     }
     
+    //this method populates the indoor weather labels with the latest HumidTempSonarData record from Firebase
     func onHumidTempSonarDataChange(change: DatabaseChange, htsRecords: [HumidTempSonarData]) {
         //populate indoor labels with latest data from firebase
         latestData = LatestReadings.latestHumidTempReadings
@@ -95,11 +102,14 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Databa
         }
     }
     
+    //this method does not perform anything as this screen does not deal with ColourRfidData records
     func onColourRFIDChange(change: DatabaseChange, rfidColourRecords: [ColourRfidData]) {
         //nothing to change
     }
     
-    
+    //Whenever the current location is updated, the new latitude and longitude are stored to the lat and long variables.
+    //The current location is reverse geocoder to obtain a textual representation which is displayed on the screen
+    // referenced from https://stackoverflow.com/questions/25296691/get-users-current-location-coordinates
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation :CLLocation = locations[0] as CLLocation
         
@@ -125,10 +135,12 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Databa
         }
     }
     
+    //if an error occurs while updating location, this method handles the error and prints it
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error \(error)")
     }
     
+    //this method fills the outdoor weather labels with CurrentWeatherViewModel values
     func displayWeather(using viewModel: CurrentWeatherViewModel){
         
         outdoorTemperatureLabel.text = viewModel.temperature
@@ -145,6 +157,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Databa
         
     }
     
+    //Whenever the user clicks on the refresh button at the top of the screen, the outdoor weather is updated.
+    //A call is made to the DarkSky Weather API using the dark sky client object. This object uses the getCurrentWeather method at the current location and updates the outdoor weather labels
+    //A comparison is performed to advise the user whether to dry washed clothes indoors or outdoors
     @IBAction func refreshCurrentWeather() {
         
         

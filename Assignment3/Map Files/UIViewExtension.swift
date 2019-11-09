@@ -34,6 +34,10 @@ import UIKit
 
 extension UIView {
   
+    //these functions contain the full implementation of the lock() and unlock() methods
+    //the lock() method is used to give a loading animation to the currentAddressLabel on the map screen whenever the map is moving. Once it stops moving, the unlock() method is used.
+    // code referenced from https://www.raywenderlich.com/197-google-maps-ios-sdk-tutorial-getting-started
+    
   func lock() {
     if let _ = viewWithTag(10) {
       //View is already locked

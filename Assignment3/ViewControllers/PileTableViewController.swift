@@ -92,6 +92,9 @@ class PileTableViewController: UITableViewController, DatabaseListener {
         
         
         // This displays the colour of the clothing item
+        // the tint colour of the icon image was changed according to RGB values
+        //code referenced from https://stackoverflow.com/questions/19274789/how-can-i-change-image-tintcolor-in-ios-and-watchkit
+        
         colourRfidCell.colourImageView.image = colourRfidCell.colourImageView.image?.withRenderingMode(.alwaysTemplate)
         colourRfidCell.colourImageView.tintColor = UIColor(red: CGFloat(redFloat), green: CGFloat(greenFloat), blue: CGFloat (blueFloat), alpha: 1.0)
         
