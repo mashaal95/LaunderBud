@@ -227,6 +227,11 @@ class FirebaseController: NSObject, DatabaseProtocol {
             
             print("Updated ColourRFID: \(change.document.data())")
             
+            if change.document.data()["Blue"] as? Int == nil
+            {
+                return
+            }
+            
             let index = getRecordIndexByIDColour(reference: docRef)!
             colourRfidList[index].blue = blue
             LatestReadings.allColourRfidReadings[index].blue = blue

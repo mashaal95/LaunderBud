@@ -2,7 +2,7 @@
 //  GoogleDataProvider.swift
 //  Assignment3
 //
-//  Created by MAC on 4/11/19.
+//  Created by Laveeshka on 4/11/19.
 //  Copyright © 2019 Monash. All rights reserved.
 //
 import UIKit

@@ -59,10 +59,15 @@ class PileTableViewController: UITableViewController, DatabaseListener {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == SECTION_RECORDS {
             
-            return all.count
-        } else {
+             //self.tableView.setEmptyMessage("No clothes have been added yet, use the sensors to add clothes :)")
+             return all.count
+        }
+         else
+        {
             return 1
         }
+        
+       
         
     }
     
@@ -106,4 +111,27 @@ class PileTableViewController: UITableViewController, DatabaseListener {
     
     
     
+}
+
+// code referenced from https://stackoverflow.com/questions/15746745/handling-an-empty-uitableview-print-a-friendly-message
+// This extension sets a message for when the Pile is empty
+extension UITableView {
+    
+    func setEmptyMessage(_ message: String) {
+        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+        messageLabel.text = message
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = .center;
+        messageLabel.font = UIFont(name: "TrebuchetMS", size: 15)
+        messageLabel.textColor = UIColor(red: CGFloat(224), green: CGFloat(247), blue: CGFloat(250), alpha: 1.0)
+        messageLabel.sizeToFit()
+        
+        self.backgroundView = messageLabel;
+        self.separatorStyle = .none;
+    }
+    
+    func restore() {
+        self.backgroundView = nil
+        self.separatorStyle = .singleLine
+    }
 }

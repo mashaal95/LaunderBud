@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:GPXFiles/Monash Caulfield.gpx">
+   </FileRef>
+   <FileRef
       location = "group:Assignment3.xcodeproj">
    </FileRef>
    <FileRef
