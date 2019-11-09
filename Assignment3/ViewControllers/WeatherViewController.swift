@@ -2,7 +2,7 @@
 //  WeatherViewController.swift
 //  Assignment3
 //
-//  Created by MAC on 3/11/19.
+//  Created by Mashaal & Laveeshka on 3/11/19.
 //  Copyright © 2019 Monash. All rights reserved.
 //
 

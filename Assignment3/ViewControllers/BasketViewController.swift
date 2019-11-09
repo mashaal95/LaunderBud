@@ -2,9 +2,10 @@
 //  BasketViewController.swift
 //  Assignment3
 //
-//  Created by Mashaal on 4/11/19.
+//  Created by Mashaal & Laveeshka on 4/11/19.
 //  Copyright © 2019 Monash. All rights reserved.
-//
+// This View Controller class is responsible for managing the basket screen
+
 
 import UIKit
 import MBCircularProgressBar
@@ -35,13 +36,17 @@ class BasketViewController: UIViewController, DatabaseListener {
     
     
     override func viewWillAppear(_ animated: Bool) {
+        // Adding a listener
         databaseController?.addListener(listener: self)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        // Removing a listener
         databaseController?.removeListener(listener: self)
     }
     
+    
+    // On changing of the HumidTempSonar data, this method animates the level of clothes in the basket
     func onHumidTempSonarDataChange(change: DatabaseChange, htsRecords: [HumidTempSonarData]) {
         
         var basketLevel = LatestReadings.latestHumidTempReadings.sonarDistance
@@ -58,12 +63,10 @@ class BasketViewController: UIViewController, DatabaseListener {
         }
     }
     
+    // This function is responsible for the 'scoreboard' like distribution of the darks and lights
     func onColourRFIDChange(change: DatabaseChange, rfidColourRecords: [ColourRfidData]) {
         var darks = 0
         var lights = 0
-        
-        
-        
         
         for reading in LatestReadings.allColourRfidReadings
         {
@@ -84,6 +87,7 @@ class BasketViewController: UIViewController, DatabaseListener {
     }
     
     
+    // This function deletes all the clothes inside the basket from the app and in the firebase database
     @IBAction func clearBasket(_ sender: Any) {
         
         for reading in LatestReadings.allColourRfidReadings
@@ -99,6 +103,7 @@ class BasketViewController: UIViewController, DatabaseListener {
     
 }
 
+// Code referenced from https://stackoverflow.com/questions/2509443/check-if-uicolor-is-dark-or-bright
 extension UIColor {
     
     // Check if the color is light or dark, as defined by the injected lightness threshold.

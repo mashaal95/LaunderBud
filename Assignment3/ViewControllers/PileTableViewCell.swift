@@ -8,6 +8,7 @@
 
 import UIKit
 
+// This class is responsible for initialising the UITableViewCell for the 'Pile' screen
 class PileTableViewCell: UITableViewCell {
     
     
