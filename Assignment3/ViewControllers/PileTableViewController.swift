@@ -55,20 +55,16 @@ class PileTableViewController: UITableViewController, DatabaseListener {
         // This function returns 1 to only show 1 table view
     }
     
-    // This function returns the count of all the records in the Colour RFID sensors
+    // This function returns the count of all the records in the Colour RFID sensors and if there are none, the function displays a friendly message
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == SECTION_RECORDS {
-            
-             //self.tableView.setEmptyMessage("No clothes have been added yet, use the sensors to add clothes :)")
-             return all.count
+        if all.count == 0 {
+            self.tableView.setEmptyMessage("No clothes have been added yet, use the sensors to add clothes :)")
         }
-         else
-        {
-            return 1
+        else {
+            self.tableView.restore()
         }
         
-       
-        
+        return all.count
     }
     
     
@@ -122,7 +118,7 @@ extension UITableView {
         messageLabel.text = message
         messageLabel.numberOfLines = 0;
         messageLabel.textAlignment = .center;
-        messageLabel.font = UIFont(name: "TrebuchetMS", size: 15)
+        messageLabel.font = UIFont(name: "TrebuchetMS", size: 20)
         messageLabel.textColor = UIColor(red: CGFloat(224), green: CGFloat(247), blue: CGFloat(250), alpha: 1.0)
         messageLabel.sizeToFit()
         
