@@ -82,15 +82,19 @@ class FirebaseController: NSObject, DatabaseProtocol {
     }
     
     
-    
+    //This method deletes a given HumidTempSonarData record from firebase
     func deleteHumidTempSonarData(htsRecord: HumidTempSonarData) {
         humidTempSonarRef?.document(htsRecord.id).delete()
     }
     
+    //This method deletes a given ColourRfidData record from firebase
     func deleteColourRFID(rfidColourRecord: ColourRfidData) {
         colourRFIDRef?.document(rfidColourRecord.id).delete()
     }
     
+    //Add the given listener to the list of listeners.
+    //Depending on the listener type we fetch and notify the listener with a change
+    //notification with an array of either all ColourRfidData or all HumidTempSonarData.
     func addListener(listener: DatabaseListener) {
         listeners.addDelegate(listener)
         
@@ -111,10 +115,10 @@ class FirebaseController: NSObject, DatabaseProtocol {
     }
     
     
-    //running a loop and fetching each document from the HumidTEMP SOnar collection
+    //running a loop and fetching each document from the HumidTempSonar collection
     //that has had a change. For each document, the the data is stored as a Dictionary
     //of Any with Strings as the keys. A new HumidTempSonarData record is created and
-    //appended to allHumidTempReadings list for an add
+    //appended to HumidTempSonarData list for an add
     func parseRecordsSnapshot(snapshot: QuerySnapshot!) { snapshot.documentChanges.forEach { change in
         
         let documentRef = change.document.documentID
@@ -161,6 +165,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         
         
         }
+        //Calling database listeners and providing them with the most up to date humidTempSonarData list.
         listeners.invoke { (listener) in
             if listener.listenerType == ListenerType.htsRecords || listener.listenerType == ListenerType.all {
                 listener.onHumidTempSonarDataChange(change: .update, htsRecords: humidTempSonarDataList) }
@@ -169,7 +174,13 @@ class FirebaseController: NSObject, DatabaseProtocol {
     }
     
     
-    
+    //running a loop and fetching each document from the ColourRFID collection
+    //that has had a change. For each document, the the data is stored as a Dictionary
+    //of Any with Strings as the keys. A new ColourRfidData record is created and
+    //appended to colourRfidList list for an add
+    //For an update, we get the index of the ColourRfidData matching
+    //that document’s ID and update that element of our ColourRfidList array.
+    //For a remove, we find the ColourRfidData in the array by ID then remove it.
     func parseColourRfid(snapshot: QuerySnapshot!) { snapshot.documentChanges.forEach { change in
         
         let docRef = change.document.documentID
@@ -251,17 +262,20 @@ class FirebaseController: NSObject, DatabaseProtocol {
         }
         
         }
+        //Calling database listeners and providing them with the most up to date ColourRfidData list.
         listeners.invoke { (listener) in
             if listener.listenerType == ListenerType.rfidColourRecords || listener.listenerType == ListenerType.all {
                 listener.onColourRFIDChange(change: .update, rfidColourRecords: colourRfidList) }
         }
     }
     
+    //Remove the given listener from the list of listeners
     func removeListener(listener: DatabaseListener) {
         listeners.removeDelegate(listener)
     }
     
-    
+    //The getRecordIndexByID method takes in an ID and returns the index of the HumidTempSonarData in
+    //the array. If it’s not present in the array, the method returns nil instead
     func getRecordIndexByID(reference: String) -> Int? {
         for humidRecord in humidTempSonarDataList {
             if(humidRecord.id == reference) {
@@ -273,7 +287,8 @@ class FirebaseController: NSObject, DatabaseProtocol {
         return nil
     }
     
-    
+    //The getRecordIndexByIDColour method takes in an ID and returns the index of the ColourRfidData in
+    //the array. If it’s not present in the array, the method returns nil instead
     func getRecordIndexByIDColour(reference: String) -> Int? {
         for colourRecord in colourRfidList{
             if(colourRecord.id == reference)
@@ -284,6 +299,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         return nil
     }
     
+    //The getRecordByIDColour method takes an ID and returns the actual ColourRfidData object itself (if it exists)
     func getRecordByIDColour(reference: String) -> ColourRfidData?{
         for colourRecord in colourRfidList {
             if(colourRecord.id == reference) { return colourRecord
@@ -295,7 +311,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
     }
     
     
-    
+    //The getRecordByID method takes an ID and returns the actual HumidTempSonarData object itself (if it exists).
     func getRecordByID(reference: String) -> HumidTempSonarData? {
         for humidRecord in humidTempSonarDataList {
             if(humidRecord.id == reference) { return humidRecord
