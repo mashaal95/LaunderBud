@@ -10,7 +10,7 @@ import UIKit
 import GoogleMaps
 
 class MapViewController: UIViewController {
-
+    
     @IBOutlet weak var mapCenterPinImage: UIImageView!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var currentAddressLabel: UILabel!
@@ -25,15 +25,15 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         mapView.delegate = self
-
+        
         
     }
-
+    
     private func reverseGeocodeCoordinate(_ coordinate: CLLocationCoordinate2D) {
         
         // 1
@@ -45,7 +45,7 @@ class MapViewController: UIViewController {
                 return
             }
             self.currentAddressLabel.unlock()
-
+            
             // 3
             self.currentAddressLabel.text = lines.joined(separator: "\n")
             
@@ -53,7 +53,7 @@ class MapViewController: UIViewController {
             let labelHeight = self.currentAddressLabel.intrinsicContentSize.height
             self.mapView.padding = UIEdgeInsets(top: self.view.safeAreaInsets.top, left: 0,
                                                 bottom: labelHeight, right: 0)
-
+            
             
             // 4
             UIView.animate(withDuration: 0.25) {
@@ -127,7 +127,7 @@ extension MapViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
         currentAddressLabel.lock()
     }
-
+    
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         reverseGeocodeCoordinate(position.target)
     }

@@ -27,10 +27,15 @@ class FirebaseController: NSObject, DatabaseProtocol {
     override init() {
         // To use Firebase in our application we first must run the FirebaseApp configure method
         FirebaseApp.configure()
+        
         // We call auth and firestore to get access to these frameworks
         authController = Auth.auth()
         database = Firestore.firestore()
+        
+        //Create an array variable of type HumidTempSonarData
         humidTempSonarDataList = [HumidTempSonarData]()
+        
+        //Create an array variable of type ColourRfidData
         colourRfidList = [ColourRfidData]()
         
         
@@ -38,7 +43,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         super.init()
         
         // This will START THE PROCESS of signing in with an anonymous account
-        // The closure will not execute until its recieved a message back which can be any time later
+        // The closure will not execute until its received a message back which can be any time later
         
         authController.signInAnonymously() { (authResult, error) in
             guard authResult != nil else {
@@ -51,7 +56,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
     }
     
     func setUpListeners() {
-        // Setting up listeners for the HumidTempSonar sensors
+        // Setting up a listener for the HumidTempSonar collection
         humidTempSonarRef = database.collection("RaspberryPi").document("b8:27:eb:76:69:ef").collection("HumidTempSonar")
         humidTempSonarRef?.addSnapshotListener(includeMetadataChanges: true) { querySnapshot, error in
             guard querySnapshot != nil else {
@@ -62,7 +67,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
             self.parseRecordsSnapshot(snapshot: querySnapshot!)
         }
         
-        // Setting up listeners for the ColourTempRFID Sensors
+        // Setting up a listener for the ColourRFID collection
         colourRFIDRef = database.collection("RaspberryPi").document("b8:27:eb:76:69:ef").collection("ColourRFID")
         colourRFIDRef?.addSnapshotListener(includeMetadataChanges: false) { querySnapshot, error in
             guard querySnapshot != nil else {
@@ -106,7 +111,10 @@ class FirebaseController: NSObject, DatabaseProtocol {
     }
     
     
-    
+    //running a loop and fetching each document from the HumidTEMP SOnar collection
+    //that has had a change. For each document, the the data is stored as a Dictionary
+    //of Any with Strings as the keys. A new HumidTempSonarData record is created and
+    //appended to allHumidTempReadings list for an add
     func parseRecordsSnapshot(snapshot: QuerySnapshot!) { snapshot.documentChanges.forEach { change in
         
         let documentRef = change.document.documentID
@@ -143,7 +151,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         
         humidTempSonarDataList.append(newRecord)
         LatestReadings.allHumidTempReadings.append(newRecord)
-      
+        
         
         
         //Taking the latest readings for the humidity and temperature, also for the level of clothes in the basket
@@ -207,7 +215,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         if change.type == .modified {
             
             print("Updated ColourRFID: \(change.document.data())")
-
+            
             let index = getRecordIndexByIDColour(reference: docRef)!
             colourRfidList[index].blue = blue
             LatestReadings.allColourRfidReadings[index].blue = blue
@@ -229,14 +237,14 @@ class FirebaseController: NSObject, DatabaseProtocol {
         }
         
         if change.type == .removed {
-
+            
             print("Removed colourRFID record: \(change.document.data())")
             if let index = getRecordIndexByIDColour(reference: docRef){
                 colourRfidList.remove(at: index)
                 LatestReadings.allColourRfidReadings.remove(at: index)
             }
         }
-       
+        
         //Taking the latest readings for the humidity and temperature, also for the level of clothes in the basket
         if LatestReadings.allColourRfidReadings.count > 0 {
             LatestReadings.latestColourRfidReadings = LatestReadings.allColourRfidReadings.last!

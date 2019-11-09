@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		04031DA52376613C0008D3C9 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04031DA42376613C0008D3C9 /* Launch Screen.storyboard */; };
-		0407D1C5236E9A7A0030648F /* JSONDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407D1C4236E9A7A0030648F /* JSONDownloader.swift */; };
 		0407D1C7236E9ACE0030648F /* DarkSkyApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407D1C6236E9ACE0030648F /* DarkSkyApiClient.swift */; };
 		0407D1C9236E9B1B0030648F /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407D1C8236E9B1B0030648F /* WeatherViewController.swift */; };
 		0486778D23715B4D009D5AC2 /* MarkerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0486778C23715B4D009D5AC2 /* MarkerInfoView.swift */; };
@@ -43,7 +42,6 @@
 
 /* Begin PBXFileReference section */
 		04031DA42376613C0008D3C9 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		0407D1C4236E9A7A0030648F /* JSONDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDownloader.swift; sourceTree = "<group>"; };
 		0407D1C6236E9ACE0030648F /* DarkSkyApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkSkyApiClient.swift; sourceTree = "<group>"; };
 		0407D1C8236E9B1B0030648F /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		0486778C23715B4D009D5AC2 /* MarkerInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerInfoView.swift; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 				04C3676E236E8F7900BC8D3E /* Weather.swift */,
 				04C36770236E8FF500BC8D3E /* DarkSkyError.swift */,
 				0407D1C6236E9ACE0030648F /* DarkSkyApiClient.swift */,
-				0407D1C4236E9A7A0030648F /* JSONDownloader.swift */,
 			);
 			path = "Weather Files";
 			sourceTree = "<group>";
@@ -356,7 +353,6 @@
 				04C3676F236E8F7900BC8D3E /* Weather.swift in Sources */,
 				0518E94A236C518D001354BD /* AppDelegate.swift in Sources */,
 				05C5EA5C2372EE2C003672CE /* PileTableViewController.swift in Sources */,
-				0407D1C5236E9A7A0030648F /* JSONDownloader.swift in Sources */,
 				0518E961236C51F8001354BD /* MulticastDelegate.swift in Sources */,
 				0486778D23715B4D009D5AC2 /* MarkerInfoView.swift in Sources */,
 				04C3676D236E8F6D00BC8D3E /* Coordinate.swift in Sources */,

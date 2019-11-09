@@ -77,14 +77,14 @@ class PileTableViewController: UITableViewController, DatabaseListener {
         
         colourRfidCell.rfidLabel.text = String(RFID)
         colourRfidCell.timeLabel.text = String(time)
-
+        
         
         let redFloat: Float = Float(colourRecord.red)/255.0
         let blueFloat: Float = Float(colourRecord.blue)/255.0
         let greenFloat: Float = Float(colourRecord.green)/255.0
         
         
-
+        
         colourRfidCell.colourImageView.image = colourRfidCell.colourImageView.image?.withRenderingMode(.alwaysTemplate)
         colourRfidCell.colourImageView.tintColor = UIColor(red: CGFloat(redFloat), green: CGFloat(greenFloat), blue: CGFloat (blueFloat), alpha: 1.0)
         

@@ -15,7 +15,6 @@ class DarkSkyApiClient {
         return URL(string: "https://api.darksky.net/forecast/\(self.darkSkyApiKey)/")!
     }()
     
-    //let downloader = JSONDownloader()
     
     let decoder = JSONDecoder()
     let session: URLSession
@@ -40,25 +39,6 @@ class DarkSkyApiClient {
         
         let request = URLRequest(url: url)
         
-//        let task = downloader.jsonTask(with: request) { json, error in
-//            
-//            DispatchQueue.main.async{
-//                
-//                guard let json = json else {
-//                    completion(nil, error)
-//                    return
-//                }
-//                
-//                guard let weather = Weather(json: json) else {
-//                    completion(nil, .jsonParsingFailure)
-//                    return
-//                }
-//                
-//                
-//                completion(weather, nil)
-//                
-//            }
-//        }
         
         let task = session.dataTask(with: request) {data, response, error in
             DispatchQueue.main.async {

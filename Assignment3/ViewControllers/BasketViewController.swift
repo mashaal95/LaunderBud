@@ -88,9 +88,9 @@ class BasketViewController: UIViewController, DatabaseListener {
         
         for reading in LatestReadings.allColourRfidReadings
         {
-    databaseController?.deleteColourRFID(rfidColourRecord: reading)
+            databaseController?.deleteColourRFID(rfidColourRecord: reading)
         }
-    
+        
         
     }
     

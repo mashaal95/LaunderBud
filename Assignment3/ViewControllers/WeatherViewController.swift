@@ -17,21 +17,21 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Databa
     @IBOutlet weak var indoorTemperatureLabel: UILabel!
     @IBOutlet weak var outdoorWeatherIcon: UIImageView!
     @IBOutlet weak var dryingConclusionLabel: UILabel!
-
+    
     @IBOutlet weak var refreshOutdoorWeather: UIButton!
     @IBOutlet weak var outdoorTemperatureLabel: UILabel!
-
+    
     @IBOutlet weak var outdoorLocationName: UILabel!
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var outdoorHumidityLabel: UILabel!
-   
+    
     @IBOutlet weak var outdoorPressureLabel: UILabel!
     @IBOutlet weak var outdoorPrecipProbabilityLabel: UILabel!
     @IBOutlet weak var outdoorWeatherSummary: UILabel!
     
     let client = DarkSkyApiClient()
-   
+    
     var locManager = CLLocationManager()
     var lat: Double = -37.8770
     var long: Double = 145.0449
@@ -45,7 +45,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Databa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         databaseController = appDelegate.databaseController
         
@@ -57,7 +57,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Databa
         if CLLocationManager.locationServicesEnabled(){
             locManager.startUpdatingLocation()
         }
-
+        
         //obtaining current date
         let date = Date()
         let formatter = DateFormatter()
@@ -67,7 +67,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Databa
         
         refreshCurrentWeather()
         
-      
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,7 +91,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Databa
             let indoorPressureString = String(format: "%.1f", latestData.pressure)
             self.indoorPressureLabel.text = "\(indoorPressureString) kPa"
             
-
+            
         }
     }
     
@@ -130,7 +130,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Databa
     }
     
     func displayWeather(using viewModel: CurrentWeatherViewModel){
-
+        
         outdoorTemperatureLabel.text = viewModel.temperature
         outdoorWeatherIcon.image = viewModel.icon
         outdoorHumidityLabel.text = viewModel.humidity
@@ -142,61 +142,61 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Databa
         print("outdoorTempComparison \(outdoorTempComparison)")
         outdoorHumidityComparison = viewModel.doubleHumidity
         print("outdoorHumidityComparison \(outdoorHumidityComparison)")
-
+        
     }
     
     @IBAction func refreshCurrentWeather() {
         
         
-                client.getCurrentWeather(at: Coordinate(latitude: lat, longitude: long)) { [unowned self] currentWeather, error in
-        
-                    if let currentWeather = currentWeather {
-                        print(currentWeather)
-                        let viewModel = CurrentWeatherViewModel(model: currentWeather)
-                        self.displayWeather(using: viewModel)
-                        
-                        if LatestReadings.latestHumidTempReadings != nil {
-                            
-                            
-                            if self.outdoorTempComparison > LatestReadings.latestHumidTempReadings.indoorTemperature && self.outdoorHumidityComparison < LatestReadings.latestHumidTempReadings.humidity {
-                                print("Outdoor temperature is \(self.outdoorTempComparison)")
-                                print("Indoor temperature is \(LatestReadings.latestHumidTempReadings.indoorTemperature)")
-                                print("Outdoor humidity is \(self.outdoorHumidityComparison)")
-                                print("Indoor humidity is \(LatestReadings.latestHumidTempReadings.humidity)")
-                                self.dryingConclusionLabel.text = "Outdoor drying strongly advised"
-                            }
-                            
-                            if self.outdoorTempComparison > LatestReadings.latestHumidTempReadings.indoorTemperature && self.outdoorHumidityComparison > LatestReadings.latestHumidTempReadings.humidity {
-                                print("Outdoor temperature is \(self.outdoorTempComparison)")
-                                print("Indoor temperature is \(LatestReadings.latestHumidTempReadings.indoorTemperature)")
-                                print("Outdoor humidity is \(self.outdoorHumidityComparison)")
-                                print("Indoor humidity is \(LatestReadings.latestHumidTempReadings.humidity)")
-                                self.dryingConclusionLabel.text = "Indoor drying advised"
-                            }
-                            
-                            if self.outdoorTempComparison < LatestReadings.latestHumidTempReadings.indoorTemperature && self.outdoorHumidityComparison < LatestReadings.latestHumidTempReadings.humidity {
-                                print("Outdoor temperature is \(self.outdoorTempComparison)")
-                                print("Indoor temperature is \(LatestReadings.latestHumidTempReadings.indoorTemperature)")
-                                print("Outdoor humidity is \(self.outdoorHumidityComparison)")
-                                print("Indoor humidity is \(LatestReadings.latestHumidTempReadings.humidity)")
-                                self.dryingConclusionLabel.text = "Outdoor drying advised"
-                            }
-                            
-                            if self.outdoorTempComparison < LatestReadings.latestHumidTempReadings.indoorTemperature && self.outdoorHumidityComparison > LatestReadings.latestHumidTempReadings.humidity {
-                                print("Outdoor temperature is \(self.outdoorTempComparison)")
-                                print("Indoor temperature is \(LatestReadings.latestHumidTempReadings.indoorTemperature)")
-                                print("Outdoor humidity is \(self.outdoorHumidityComparison)")
-                                print("Indoor humidity is \(LatestReadings.latestHumidTempReadings.humidity)")
-                                self.dryingConclusionLabel.text = "Indoor drying strongly advised"
-                            }
-                        }
+        client.getCurrentWeather(at: Coordinate(latitude: lat, longitude: long)) { [unowned self] currentWeather, error in
+            
+            if let currentWeather = currentWeather {
+                print(currentWeather)
+                let viewModel = CurrentWeatherViewModel(model: currentWeather)
+                self.displayWeather(using: viewModel)
+                
+                if LatestReadings.latestHumidTempReadings != nil {
+                    
+                    
+                    if self.outdoorTempComparison > LatestReadings.latestHumidTempReadings.indoorTemperature && self.outdoorHumidityComparison < LatestReadings.latestHumidTempReadings.humidity {
+                        print("Outdoor temperature is \(self.outdoorTempComparison)")
+                        print("Indoor temperature is \(LatestReadings.latestHumidTempReadings.indoorTemperature)")
+                        print("Outdoor humidity is \(self.outdoorHumidityComparison)")
+                        print("Indoor humidity is \(LatestReadings.latestHumidTempReadings.humidity)")
+                        self.dryingConclusionLabel.text = "Outdoor drying strongly advised"
+                    }
+                    
+                    if self.outdoorTempComparison > LatestReadings.latestHumidTempReadings.indoorTemperature && self.outdoorHumidityComparison > LatestReadings.latestHumidTempReadings.humidity {
+                        print("Outdoor temperature is \(self.outdoorTempComparison)")
+                        print("Indoor temperature is \(LatestReadings.latestHumidTempReadings.indoorTemperature)")
+                        print("Outdoor humidity is \(self.outdoorHumidityComparison)")
+                        print("Indoor humidity is \(LatestReadings.latestHumidTempReadings.humidity)")
+                        self.dryingConclusionLabel.text = "Indoor drying advised"
+                    }
+                    
+                    if self.outdoorTempComparison < LatestReadings.latestHumidTempReadings.indoorTemperature && self.outdoorHumidityComparison < LatestReadings.latestHumidTempReadings.humidity {
+                        print("Outdoor temperature is \(self.outdoorTempComparison)")
+                        print("Indoor temperature is \(LatestReadings.latestHumidTempReadings.indoorTemperature)")
+                        print("Outdoor humidity is \(self.outdoorHumidityComparison)")
+                        print("Indoor humidity is \(LatestReadings.latestHumidTempReadings.humidity)")
+                        self.dryingConclusionLabel.text = "Outdoor drying advised"
+                    }
+                    
+                    if self.outdoorTempComparison < LatestReadings.latestHumidTempReadings.indoorTemperature && self.outdoorHumidityComparison > LatestReadings.latestHumidTempReadings.humidity {
+                        print("Outdoor temperature is \(self.outdoorTempComparison)")
+                        print("Indoor temperature is \(LatestReadings.latestHumidTempReadings.indoorTemperature)")
+                        print("Outdoor humidity is \(self.outdoorHumidityComparison)")
+                        print("Indoor humidity is \(LatestReadings.latestHumidTempReadings.humidity)")
+                        self.dryingConclusionLabel.text = "Indoor drying strongly advised"
                     }
                 }
+            }
+        }
         
     }
     
     
     
-
-
+    
+    
 }

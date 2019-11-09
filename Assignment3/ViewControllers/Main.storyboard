@@ -101,8 +101,8 @@
                                     <constraint firstAttribute="height" constant="71" id="XNy-oy-6zH"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ata-Ad-sHk">
-                                <rect key="frame" x="116" y="486" width="187" height="37"/>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ata-Ad-sHk">
+                                <rect key="frame" x="45" y="493" width="324" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Clear Basket">
                                     <color key="titleColor" red="0.14901960780000001" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -135,6 +135,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.14901960780000001" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="ata-Ad-sHk" firstAttribute="leading" secondItem="2Af-1d-rnH" secondAttribute="leading" constant="45" id="0Dc-8v-TJY"/>
                             <constraint firstItem="vUA-wj-XLk" firstAttribute="trailing" secondItem="9oJ-oo-Woe" secondAttribute="trailing" id="0uh-k0-Bsp"/>
                             <constraint firstItem="0rJ-WF-vqf" firstAttribute="top" secondItem="DjW-3T-LhK" secondAttribute="bottom" constant="-90" id="1yC-Uo-iif"/>
                             <constraint firstItem="2Af-1d-rnH" firstAttribute="trailing" secondItem="zgT-pE-2Cn" secondAttribute="trailing" constant="44" id="4or-FW-mYU"/>
@@ -147,7 +148,6 @@
                             <constraint firstItem="DjW-3T-LhK" firstAttribute="baseline" secondItem="pkx-mV-8vE" secondAttribute="firstBaseline" constant="-6" id="OAL-Bq-ioR"/>
                             <constraint firstItem="2Af-1d-rnH" firstAttribute="trailing" secondItem="DjW-3T-LhK" secondAttribute="trailing" constant="44" id="QdF-C7-G6e"/>
                             <constraint firstItem="Ckn-aY-M0w" firstAttribute="top" secondItem="YeL-BG-yrt" secondAttribute="top" constant="558" id="S9t-Nz-ruJ"/>
-                            <constraint firstItem="Ckn-aY-M0w" firstAttribute="top" secondItem="ata-Ad-sHk" secondAttribute="bottom" constant="35" id="SWF-tw-msk"/>
                             <constraint firstItem="Ckn-aY-M0w" firstAttribute="leading" secondItem="x63-0T-sjl" secondAttribute="leading" id="TCY-4P-ka7"/>
                             <constraint firstItem="9oJ-oo-Woe" firstAttribute="top" secondItem="YeL-BG-yrt" secondAttribute="top" constant="170" id="TGR-Se-tsw"/>
                             <constraint firstItem="x63-0T-sjl" firstAttribute="top" secondItem="pkx-mV-8vE" secondAttribute="bottom" constant="-86" id="Tey-by-bJq"/>
@@ -159,11 +159,12 @@
                             <constraint firstItem="x63-0T-sjl" firstAttribute="firstBaseline" secondItem="0rJ-WF-vqf" secondAttribute="firstBaseline" id="doG-0X-9tK"/>
                             <constraint firstItem="7N5-el-S7i" firstAttribute="centerX" secondItem="pkx-mV-8vE" secondAttribute="centerX" id="iMr-aU-jIi"/>
                             <constraint firstItem="7N5-el-S7i" firstAttribute="top" secondItem="Ckn-aY-M0w" secondAttribute="bottom" constant="22" id="inQ-gJ-UEe"/>
+                            <constraint firstItem="2Af-1d-rnH" firstAttribute="trailing" secondItem="ata-Ad-sHk" secondAttribute="trailing" constant="45" id="mjp-hF-lrC"/>
                             <constraint firstItem="9oJ-oo-Woe" firstAttribute="leading" secondItem="YeL-BG-yrt" secondAttribute="leadingMargin" id="o37-EU-FU7"/>
                             <constraint firstItem="0rJ-WF-vqf" firstAttribute="top" secondItem="zgT-pE-2Cn" secondAttribute="bottom" constant="8" symbolic="YES" id="oSD-uE-Azo"/>
                             <constraint firstItem="ino-yE-zTH" firstAttribute="top" secondItem="2Af-1d-rnH" secondAttribute="top" id="orE-r5-isS"/>
+                            <constraint firstItem="Ckn-aY-M0w" firstAttribute="top" secondItem="ata-Ad-sHk" secondAttribute="bottom" constant="35" id="qXd-VB-lJL"/>
                             <constraint firstItem="x63-0T-sjl" firstAttribute="top" secondItem="7N5-el-S7i" secondAttribute="bottom" constant="8" symbolic="YES" id="u2R-ne-9dk"/>
-                            <constraint firstItem="Ckn-aY-M0w" firstAttribute="centerX" secondItem="ata-Ad-sHk" secondAttribute="centerX" id="u3U-dU-fG8"/>
                             <constraint firstItem="DjW-3T-LhK" firstAttribute="centerX" secondItem="0rJ-WF-vqf" secondAttribute="centerX" constant="10.5" id="uxi-Pq-nUV"/>
                             <constraint firstItem="9oJ-oo-Woe" firstAttribute="leading" secondItem="ino-yE-zTH" secondAttribute="leading" constant="-73" id="yWa-m0-Dh2"/>
                             <constraint firstItem="pkx-mV-8vE" firstAttribute="centerX" secondItem="x63-0T-sjl" secondAttribute="centerX" constant="-11" id="ykY-rJ-euQ"/>
@@ -208,7 +209,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iCw-h1-qFH">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="iCw-h1-qFH">
                                 <rect key="frame" x="20" y="183" width="344" height="95"/>
                                 <color key="backgroundColor" red="0.14901960780000001" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -225,7 +226,7 @@
                                 <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4ep-1f-e8W">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="4ep-1f-e8W">
                                 <rect key="frame" x="20" y="336" width="344" height="80"/>
                                 <color key="backgroundColor" red="0.14901960780000001" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -242,13 +243,13 @@
                                 <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SFB-gw-Zu0">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="SFB-gw-Zu0">
                                 <rect key="frame" x="20" y="471" width="344" height="95"/>
                                 <color key="backgroundColor" red="0.14901960780000001" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="95" id="2SD-U3-IAB"/>
                                 </constraints>
-                                <string key="text">This screen shows the indoor and outdoor weather conditions. This includes the air pressure and humidity to let the user decide as to where they would like to dry their clothes. A miniature label provides advice on the best place to dry clothes.</string>
+                                <string key="text">This screen shows the indoor and outdoor weather conditions. This includes the temperature and humidity to let the user decide as to where they would like to dry their clothes. A miniature label provides advice on the best place to dry clothes.</string>
                                 <color key="textColor" red="0.87843137250000003" green="0.94901960780000005" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -259,10 +260,10 @@
                                 <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EBw-6E-97U">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="EBw-6E-97U">
                                 <rect key="frame" x="20" y="622" width="344" height="147"/>
                                 <color key="backgroundColor" red="0.14901960780000001" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <string key="text">Should the user decide that he wants to do none of that and wants to locate a nearby coin operated laundry, this screen provides all the nearby locations relative to the user's current location.</string>
+                                <string key="text">Should the user decide that he wants to carry out his laundry and/or drying at a coin laundry, this screen provides all the nearby locations relative to the user's current location.</string>
                                 <color key="textColor" red="0.87843137250000003" green="0.94901960780000005" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
