@@ -190,9 +190,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MZa-Oo-0Ie">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MZa-Oo-0Ie">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="barTintColor" red="0.14901960780000001" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -209,72 +208,99 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iCw-h1-qFH">
-                                <rect key="frame" x="20" y="151" width="344" height="147"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iCw-h1-qFH">
+                                <rect key="frame" x="20" y="183" width="344" height="95"/>
                                 <color key="backgroundColor" red="0.14901960780000001" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="95" id="onm-s8-DT3"/>
+                                </constraints>
                                 <string key="text">This screen shows the level of clothes that are present in the basket via an animated circular progress bar. The number of dark and light clothes in the basket are shown in a scoreboard-like manner.</string>
                                 <color key="textColor" red="0.87843137250000003" green="0.94901960780000005" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Basket Screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAD-US-nix">
-                                <rect key="frame" x="26" y="119" width="125" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Basket Screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAD-US-nix">
+                                <rect key="frame" x="26" y="151" width="125" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SFB-gw-Zu0">
-                                <rect key="frame" x="20" y="478" width="344" height="147"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4ep-1f-e8W">
+                                <rect key="frame" x="20" y="336" width="344" height="80"/>
                                 <color key="backgroundColor" red="0.14901960780000001" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="U9e-N7-dlH"/>
+                                </constraints>
+                                <string key="text">This screen shows the colour of the clothes and the details of the clothes. The 'Time Added' label shows the user as to when the clothing item was added in to the basket.</string>
+                                <color key="textColor" red="0.87843137250000003" green="0.94901960780000005" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pile Screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IrF-8k-ho0">
+                                <rect key="frame" x="26" y="304" width="97" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SFB-gw-Zu0">
+                                <rect key="frame" x="20" y="471" width="344" height="95"/>
+                                <color key="backgroundColor" red="0.14901960780000001" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="95" id="2SD-U3-IAB"/>
+                                </constraints>
                                 <string key="text">This screen shows the indoor and outdoor weather conditions. This includes the air pressure and humidity to let the user decide as to where they would like to dry their clothes. A miniature label provides advice on the best place to dry clothes.</string>
                                 <color key="textColor" red="0.87843137250000003" green="0.94901960780000005" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weather Screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72q-aV-lF6">
-                                <rect key="frame" x="26" y="446" width="139" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather Screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72q-aV-lF6">
+                                <rect key="frame" x="26" y="439" width="139" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EBw-6E-97U">
-                                <rect key="frame" x="20" y="642" width="344" height="147"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EBw-6E-97U">
+                                <rect key="frame" x="20" y="622" width="344" height="147"/>
                                 <color key="backgroundColor" red="0.14901960780000001" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <string key="text">Should the user decide that he wants to do none of that and wants to locate a nearby coin operated laundry, this screen provides all the nearby locations relative to the user's current location.</string>
                                 <color key="textColor" red="0.87843137250000003" green="0.94901960780000005" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Map Screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1yU-XS-8mj">
-                                <rect key="frame" x="26" y="610" width="104" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4ep-1f-e8W">
-                                <rect key="frame" x="20" y="316" width="344" height="147"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.14901960780000001" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <string key="text">This screen shows the colour of the clothes and the details of the clothes. The 'Time Added' label shows the user as to when the clothing item was added in to the basket.</string>
-                                <color key="textColor" red="0.87843137250000003" green="0.94901960780000005" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pile Screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IrF-8k-ho0">
-                                <rect key="frame" x="26" y="284" width="97" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map Screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1yU-XS-8mj">
+                                <rect key="frame" x="26" y="590" width="104" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.14901960780000001" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="bAD-US-nix" firstAttribute="leading" secondItem="IrF-8k-ho0" secondAttribute="leading" id="02k-Yw-6Px"/>
+                            <constraint firstItem="MZa-Oo-0Ie" firstAttribute="top" secondItem="a6q-Al-nCe" secondAttribute="top" id="0ZF-6r-6bJ"/>
+                            <constraint firstItem="IrF-8k-ho0" firstAttribute="top" secondItem="iCw-h1-qFH" secondAttribute="bottom" constant="26" id="13K-3m-vTm"/>
+                            <constraint firstItem="4ep-1f-e8W" firstAttribute="trailing" secondItem="SFB-gw-Zu0" secondAttribute="trailing" id="5Lp-hn-6ic"/>
+                            <constraint firstItem="bAD-US-nix" firstAttribute="leading" secondItem="a6q-Al-nCe" secondAttribute="leading" constant="26" id="9Qc-bk-kgn"/>
+                            <constraint firstItem="SFB-gw-Zu0" firstAttribute="top" secondItem="72q-aV-lF6" secondAttribute="bottom" constant="8" symbolic="YES" id="AY8-bj-3b6"/>
+                            <constraint firstItem="bAD-US-nix" firstAttribute="top" secondItem="MZa-Oo-0Ie" secondAttribute="bottom" constant="63" id="EQh-wF-O2a"/>
+                            <constraint firstItem="iCw-h1-qFH" firstAttribute="trailing" secondItem="4ep-1f-e8W" secondAttribute="trailing" id="K6R-VD-Sb7"/>
+                            <constraint firstItem="a6q-Al-nCe" firstAttribute="bottom" secondItem="EBw-6E-97U" secondAttribute="bottom" constant="93" id="MqH-eA-WOP"/>
+                            <constraint firstItem="IrF-8k-ho0" firstAttribute="leading" secondItem="72q-aV-lF6" secondAttribute="leading" id="NYF-ac-bvr"/>
+                            <constraint firstItem="a6q-Al-nCe" firstAttribute="trailing" secondItem="iCw-h1-qFH" secondAttribute="trailing" constant="50" id="QDN-Bg-Ucb"/>
+                            <constraint firstItem="1yU-XS-8mj" firstAttribute="top" secondItem="SFB-gw-Zu0" secondAttribute="bottom" constant="24" id="Qdb-ME-F9d"/>
+                            <constraint firstAttribute="trailing" secondItem="MZa-Oo-0Ie" secondAttribute="trailing" id="SFP-bz-OYo"/>
+                            <constraint firstItem="iCw-h1-qFH" firstAttribute="top" secondItem="bAD-US-nix" secondAttribute="bottom" constant="8" symbolic="YES" id="Tae-qP-zu1"/>
+                            <constraint firstItem="SFB-gw-Zu0" firstAttribute="trailing" secondItem="EBw-6E-97U" secondAttribute="trailing" id="UD9-J3-ngi"/>
+                            <constraint firstItem="4ep-1f-e8W" firstAttribute="leading" secondItem="SFB-gw-Zu0" secondAttribute="leading" id="X0T-aG-yCl"/>
+                            <constraint firstItem="MZa-Oo-0Ie" firstAttribute="leading" secondItem="gkG-LS-frD" secondAttribute="leading" id="Zgx-Sh-Afb"/>
+                            <constraint firstItem="72q-aV-lF6" firstAttribute="leading" secondItem="1yU-XS-8mj" secondAttribute="leading" id="c5I-cr-Q60"/>
+                            <constraint firstItem="SFB-gw-Zu0" firstAttribute="leading" secondItem="EBw-6E-97U" secondAttribute="leading" id="eOY-Kr-cBQ"/>
+                            <constraint firstItem="iCw-h1-qFH" firstAttribute="leading" secondItem="4ep-1f-e8W" secondAttribute="leading" id="hYo-MO-VJ1"/>
+                            <constraint firstItem="EBw-6E-97U" firstAttribute="top" secondItem="1yU-XS-8mj" secondAttribute="bottom" constant="8" symbolic="YES" id="iSb-w3-023"/>
+                            <constraint firstItem="iCw-h1-qFH" firstAttribute="leading" secondItem="gkG-LS-frD" secondAttribute="leadingMargin" id="pK6-Ye-i0w"/>
+                            <constraint firstItem="72q-aV-lF6" firstAttribute="top" secondItem="4ep-1f-e8W" secondAttribute="bottom" constant="23" id="rct-Yn-7Gp"/>
+                            <constraint firstItem="4ep-1f-e8W" firstAttribute="top" secondItem="IrF-8k-ho0" secondAttribute="bottom" constant="8" symbolic="YES" id="ugq-sy-0b7"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="a6q-Al-nCe"/>
                     </view>
                 </viewController>
