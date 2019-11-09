@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04031DA52376613C0008D3C9 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04031DA42376613C0008D3C9 /* Launch Screen.storyboard */; };
 		0407D1C5236E9A7A0030648F /* JSONDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407D1C4236E9A7A0030648F /* JSONDownloader.swift */; };
 		0407D1C7236E9ACE0030648F /* DarkSkyApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407D1C6236E9ACE0030648F /* DarkSkyApiClient.swift */; };
 		0407D1C9236E9B1B0030648F /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407D1C8236E9B1B0030648F /* WeatherViewController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04031DA42376613C0008D3C9 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		0407D1C4236E9A7A0030648F /* JSONDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDownloader.swift; sourceTree = "<group>"; };
 		0407D1C6236E9ACE0030648F /* DarkSkyApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkSkyApiClient.swift; sourceTree = "<group>"; };
 		0407D1C8236E9B1B0030648F /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				0518E96C236C70E3001354BD /* GoogleService-Info.plist */,
 				0518E96A236C6FBD001354BD /* AddSensorDataDelegate.swift */,
 				05A4DAAA236F171400EBE9CE /* DottedVertical.swift */,
+				04031DA42376613C0008D3C9 /* Launch Screen.storyboard */,
 			);
 			path = Assignment3;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				0486779123715B5D009D5AC2 /* MarkerInfoView.xib in Resources */,
 				0518E950236C518E001354BD /* Assets.xcassets in Resources */,
 				0518E96D236C70E3001354BD /* GoogleService-Info.plist in Resources */,
+				04031DA52376613C0008D3C9 /* Launch Screen.storyboard in Resources */,
 				0518E973236C8CD5001354BD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
