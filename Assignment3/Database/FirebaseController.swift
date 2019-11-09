@@ -232,6 +232,27 @@ class FirebaseController: NSObject, DatabaseProtocol {
                 return
             }
             
+            if change.document.data()["RFIDInfo"] as? String == nil
+            {
+                return
+            }
+            
+            if change.document.data()["TimeStamp"] as? Timestamp == nil
+            {
+                return
+            }
+            
+            if change.document.data()["Green"] as? Int == nil
+            {
+                return
+            }
+            
+            
+            if change.document.data()["Red"] as? Int == nil
+            {
+                return
+            }
+            
             let index = getRecordIndexByIDColour(reference: docRef)!
             colourRfidList[index].blue = blue
             LatestReadings.allColourRfidReadings[index].blue = blue
