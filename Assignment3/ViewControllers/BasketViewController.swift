@@ -53,10 +53,10 @@ class BasketViewController: UIViewController, DatabaseListener {
         
         
         switch basketLevel {
-        case _ where basketLevel >= 6.07:
+        case _ where basketLevel >= 5.50:
             self.circularProgressBar.value = 0
-        case _ where basketLevel <= 6.06:
-            var percent = (basketLevel*100)/6.07
+        case _ where basketLevel <= 5.40:
+            var percent = (basketLevel*100)/5.50
             UIView.animate(withDuration: 1,animations: {self.circularProgressBar.value = CGFloat(Int(percent))})
         default:
             self.circularProgressBar.value = 0
