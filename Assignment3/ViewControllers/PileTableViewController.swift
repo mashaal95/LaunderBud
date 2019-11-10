@@ -76,7 +76,7 @@ class PileTableViewController: UITableViewController, DatabaseListener {
         // Date needed additional formatting as it was stored as a time stamp value in the firebase database
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = NSTimeZone.local
-        dateFormatter.dateFormat = "hh:mm a"
+        dateFormatter.dateFormat = "dd.MM.yyyy hh:mm a"
         let timer = dateFormatter.string(from: colourRecord.timeStamp)
         
         var RFID = String(colourRecord.rfidInfo)
