@@ -172,6 +172,10 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Databa
                 
                 if LatestReadings.latestHumidTempReadings != nil {
                     
+                    if self.outdoorWeatherIcon.image == #imageLiteral(resourceName: "rain") {
+                        self.dryingConclusionLabel.text = "Raining outside. Dry indoors"
+                    }
+                    else {
                     
                     if self.outdoorTempComparison > LatestReadings.latestHumidTempReadings.indoorTemperature && self.outdoorHumidityComparison < LatestReadings.latestHumidTempReadings.humidity {
                         print("Outdoor temperature is \(self.outdoorTempComparison)")
@@ -204,6 +208,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Databa
                         print("Indoor humidity is \(LatestReadings.latestHumidTempReadings.humidity)")
                         self.dryingConclusionLabel.text = "Indoor drying strongly advised"
                     }
+                }
                 }
             }
         }
