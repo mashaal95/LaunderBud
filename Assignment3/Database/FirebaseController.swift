@@ -200,6 +200,17 @@ class FirebaseController: NSObject, DatabaseProtocol {
             return
         }
         
+        if change.document.data()["Red"] as? Int == nil
+        {
+            return
+        }
+        
+        if change.document.data()["Green"] as? Int == nil
+        {
+            return
+        }
+        
+        
         let blue = change.document.data()["Blue"] as! Int
         let green = change.document.data()["Green"] as! Int
         let rfidInfo = change.document.data()["RFIDInfo"] as! String
@@ -225,53 +236,21 @@ class FirebaseController: NSObject, DatabaseProtocol {
         
         if change.type == .modified {
             
-            print("Updated ColourRFID: \(change.document.data())")
-            
-            if change.document.data()["Blue"] as? Int == nil
-            {
-                return
-            }
-            
-            if change.document.data()["RFIDInfo"] as? String == nil
-            {
-                return
-            }
-            
-            if change.document.data()["TimeStamp"] as? Timestamp == nil
-            {
-                return
-            }
-            
-            if change.document.data()["Green"] as? Int == nil
-            {
-                return
-            }
-            
-            
-            if change.document.data()["Red"] as? Int == nil
-            {
-                return
-            }
-            
-            let index = getRecordIndexByIDColour(reference: docRef)!
-            colourRfidList[index].blue = blue
-            LatestReadings.allColourRfidReadings[index].blue = blue
-            
-            colourRfidList[index].green = green
-            LatestReadings.allColourRfidReadings[index].green = green
-            
-            colourRfidList[index].red = red
-            LatestReadings.allColourRfidReadings[index].red = red
-            
-            colourRfidList[index].rfidInfo = rfidInfo
-            LatestReadings.allColourRfidReadings[index].rfidInfo = rfidInfo
-            
-            colourRfidList[index].timeStamp = timeStamp.dateValue()
-            LatestReadings.allColourRfidReadings[index].timeStamp = timeStamp.dateValue()
-            
-            colourRfidList[index].id = docRef
-            LatestReadings.allColourRfidReadings[index].id = docRef
-        }
+            print("added")
+
+            let newRecord = ColourRfidData()
+            newRecord.blue = blue
+            newRecord.green = green
+            newRecord.rfidInfo = rfidInfo
+            newRecord.red = red
+            newRecord.timeStamp = timestamper
+
+
+            newRecord.id = docRef
+            colourRfidList.append(newRecord)
+            LatestReadings.allColourRfidReadings.append(newRecord)
+        
+                }
         
         if change.type == .removed {
             
