@@ -106,6 +106,9 @@ extension MapViewController: CLLocationManagerDelegate {
         mapView.isMyLocationEnabled = true
         //this adds a button that when pressed, centers the maps on the user's current location
         mapView.settings.myLocationButton = true
+        
+        
+
     }
     
     
@@ -123,6 +126,13 @@ extension MapViewController: CLLocationManagerDelegate {
         
         
         fetchNearbyPlaces(coordinate: location.coordinate)
+        
+        //this draws a blue dot over the user's current location
+        mapView.isMyLocationEnabled = true
+        //this adds a button that when pressed, centers the maps on the user's current location
+        mapView.settings.myLocationButton = true
+        
+        
     }
     
 }
@@ -138,6 +148,7 @@ extension MapViewController: GMSMapViewDelegate {
     //whenever the maps stops moving, the reverseGeocodeCoordinate method is called to reverse geocode the new position
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         reverseGeocodeCoordinate(position.target)
+        
     }
     
     // this method is called each time that the user taps on a coin laundry marker on the map
