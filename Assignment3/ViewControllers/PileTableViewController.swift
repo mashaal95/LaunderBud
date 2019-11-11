@@ -35,12 +35,12 @@ class PileTableViewController: UITableViewController, DatabaseListener {
     
     // This function is responsible for loading the data from the Firebase database when it comes to the Colour & RFID values
     func onColourRFIDChange(change: DatabaseChange, rfidColourRecords: [ColourRfidData]) {
-        
-        all = rfidColourRecords
+        all = LatestReadings.allColourRfidReadings
         self.tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         databaseController?.addListener(listener: self)
         // Adding a listener
     }
@@ -49,13 +49,14 @@ class PileTableViewController: UITableViewController, DatabaseListener {
         databaseController?.removeListener(listener: self)
         // Removing a listener
     }
+
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-        // This function returns 1 to only show 1 table view
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        return 1
+//        // This function returns 1 to only show 1 table view
+//    }
     
-    // This function returns the count of all the records in the Colour RFID sensors and if there are none, the function displays a friendly message
+//     This function returns the count of all the records in the Colour RFID sensors and if there are none, the function displays a friendly message
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if all.count == 0 {
             self.tableView.setEmptyMessage("No clothes have been added yet, use the sensors to add clothes :)")
@@ -68,10 +69,13 @@ class PileTableViewController: UITableViewController, DatabaseListener {
     }
     
     
+    
+    
     // This function is responsible for displaying the appropriate data in its labels
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let colourRfidCell = tableView.dequeueReusableCell(withIdentifier: CELL_RECORD, for: indexPath) as! PileTableViewCell
         let colourRecord = all[indexPath.row]
+        print (colourRecord)
         
         // Date needed additional formatting as it was stored as a time stamp value in the firebase database
         let dateFormatter = DateFormatter()
@@ -79,7 +83,7 @@ class PileTableViewController: UITableViewController, DatabaseListener {
         dateFormatter.dateFormat = "dd.MM.yyyy hh:mm a"
         let timer = dateFormatter.string(from: colourRecord.timeStamp)
         
-        var RFID = String(colourRecord.rfidInfo)
+        let RFID = String(colourRecord.rfidInfo)
         let time = (timer)
         
         colourRfidCell.rfidLabel.text = String(RFID)
@@ -103,8 +107,15 @@ class PileTableViewController: UITableViewController, DatabaseListener {
     
     // This function is responsible for deleting a particular item in the table view cell, should the user choose to delete it
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete && indexPath.section == SECTION_PARTY {
-            databaseController?.deleteColourRFID(rfidColourRecord: all[indexPath.row]) }
+       
+        
+        if editingStyle == .delete {
+            databaseController?.deleteColourRFID(rfidColourRecord: all.remove(at: indexPath.row))
+            LatestReadings.allColourRfidReadings.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+        }
+        
         
     }
     

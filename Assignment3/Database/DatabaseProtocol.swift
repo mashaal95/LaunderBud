@@ -39,4 +39,5 @@ protocol DatabaseProtocol: AnyObject {
     func deleteColourRFID(rfidColourRecord: ColourRfidData)
     func addListener(listener: DatabaseListener)
     func removeListener(listener: DatabaseListener)
+    
 }

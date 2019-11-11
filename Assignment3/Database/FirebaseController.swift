@@ -257,7 +257,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
             print("Removed colourRFID record: \(change.document.data())")
             if let index = getRecordIndexByIDColour(reference: docRef){
                 colourRfidList.remove(at: index)
-                LatestReadings.allColourRfidReadings.remove(at: index)
+              //  LatestReadings.allColourRfidReadings.remove(at: index)
             }
         }
         
