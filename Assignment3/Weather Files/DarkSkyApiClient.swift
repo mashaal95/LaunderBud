@@ -14,7 +14,7 @@ import Foundation
 class DarkSkyApiClient {
     
     //my API key
-    fileprivate let darkSkyApiKey = "8808944ad2a7b4ed23c378de927db3aa"
+    fileprivate let darkSkyApiKey = ""
     
     
     lazy var baseUrl: URL = {
